@@ -1,9 +1,9 @@
-@if (content(); as c) {
+﻿@if (content(); as c) {
   <main>
     <app-hero [images]="c.hero.images" [intervalMs]="c.hero.intervalMs" [tagline]="c.hero.tagline" />
     <app-capabilities [title]="c.capabilitiesTitle" [items]="c.capabilities" />
     <app-stats [items]="c.stats" />
   </main>
 
-  <app-site-footer [contact]="c.contact" [tagline]="c.hero.tagline" [nav]="c.menu" [logo]="c.logo" />
+  <app-site-footer [contact]="c.contact" [tagline]="c.hero.tagline" [nav]="c.menu" [logo]="c.menuLogo" />
 }

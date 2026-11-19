@@ -1,4 +1,4 @@
-@if (content(); as c) {
+﻿@if (content(); as c) {
   @if (page(); as p) {
     <main class="gp" [class.gp--dark]="p.theme === 'dark'" [class.gp--beige]="p.theme === 'beige'">
       <header class="gp__head">
@@ -118,7 +118,7 @@
       </section>
     </main>
 
-    <app-site-footer [contact]="c.contact" [tagline]="c.hero.tagline" [nav]="c.menu" [logo]="c.logo" />
+    <app-site-footer [contact]="c.contact" [tagline]="c.hero.tagline" [nav]="c.menu" [logo]="c.menuLogo" />
 
     @if (viewer(); as v) {
       <div class="viewer" role="dialog" aria-modal="true" [attr.aria-label]="v.project.title" (click)="close()">

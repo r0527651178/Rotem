@@ -73,7 +73,8 @@
     </p>
 
     @if (logo() && !logoFailed()) {
-      <img class="reach__logo" [src]="logo()" alt="ROTEM" (error)="logoFailed.set(true)" />
+      <span class="reach__logo" role="img" aria-label="ROTEM" [style.--logo]="'url(' + logo() + ')'"></span>
+      <img class="reach__probe" [src]="logo()" alt="" hidden (error)="logoFailed.set(true)" />
     } @else {
       <span class="reach__mark" aria-hidden="true">R</span>
     }

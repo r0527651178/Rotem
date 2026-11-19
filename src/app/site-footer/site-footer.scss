@@ -1,8 +1,9 @@
-﻿// Geometry from sketch 11 (922px wide). 1 sketch px ≈ 0.1085vw.
+// Geometry from sketch 11 (922px wide). 1 sketch px ≈ 0.1085vw.
 :host {
-  --s: clamp(0.7px, 0.1085vw, 2.1px);
+  --s: clamp(0.7px, 0.1085vw, 3.6px);
   --gold: #c9a46a;
   --line: rgba(255, 253, 244, 0.75);
+  --blue-label: #d9dbcf;
   display: block;
 }
 
@@ -14,7 +15,7 @@
 
 /* ---------- Lead form ---------- */
 .lead {
-  padding: calc(52 * var(--s)) 24px calc(46 * var(--s));
+  padding: calc(55 * var(--s)) 24px calc(46 * var(--s));
 }
 
 .lead__form {
@@ -23,13 +24,12 @@
 }
 
 .lead__title {
-  margin: 0 0 calc(22 * var(--s));
-  padding-inline-end: calc(36 * var(--s));
+  margin: 0 0 calc(14 * var(--s));
   text-align: center;
   font-family: var(--font-display);
   font-weight: 400;
-  font-size: max(17px, calc(16 * var(--s)));
-  letter-spacing: 0.04em;
+  font-size: max(17px, calc(18 * var(--s)));
+  letter-spacing: 0.05em;
   color: #e9e3da;
 }
 
@@ -55,7 +55,7 @@
   grid-template-columns: auto 1fr;
   align-items: end;
   column-gap: calc(12 * var(--s));
-  margin-bottom: calc(18 * var(--s));
+  margin-bottom: calc(10 * var(--s));
 }
 
 .field__label {
@@ -63,7 +63,7 @@
   font-family: var(--font-cond, var(--font-display));
   font-stretch: 80%;
   font-size: max(15px, calc(14.5 * var(--s)));
-  color: #e6ebf2;
+  color: var(--blue-label);
   white-space: nowrap;
   transform-origin: right bottom;
   transition:
@@ -211,19 +211,21 @@
   justify-content: flex-start;
   align-items: center;
   gap: 16px;
-  margin-top: calc(28 * var(--s));
+  margin-top: calc(24 * var(--s));
   // Sketch: the button sits at the left end of the lines.
 }
 
 .lead__submit {
-  padding: calc(4 * var(--s)) calc(16 * var(--s));
+  margin-inline-end: calc(-8 * var(--s));
+  padding: 3px calc(16 * var(--s));
   border: 0;
   border-radius: calc(3 * var(--s)) 0 0 0;
   background: var(--beige);
   color: #2a2420;
   font-family: var(--font-display);
-  font-weight: 500;
-  font-size: max(13px, calc(9.5 * var(--s)));
+  font-weight: 700;
+  font-size: max(12px, calc(10 * var(--s)));
+  line-height: 1.2;
   cursor: pointer;
   transition:
     background-color 0.35s,
@@ -252,18 +254,19 @@
 
 /* ---------- Contact line ---------- */
 .reach {
-  // Sketch: arrow at the right edge, then the contact line with the logo right after it.
+  // The contact line and logo are centred on the page; the arrow sits at the right edge.
+  position: relative;
   display: flex;
+  justify-content: center;
   align-items: center;
-  gap: calc(14 * var(--s));
-  padding: 0 calc(35 * var(--s)) calc(48 * var(--s)) 24px;
-
-  .reach__line {
-    margin-inline-start: calc(110 * var(--s));
-  }
+  gap: 0;
+  padding: 0 24px calc(53 * var(--s));
 }
 
 .reach__top {
+  position: absolute;
+  inset-inline-end: calc(35 * var(--s));
+  top: calc((100% - 53 * var(--s)) / 2 - 14 * var(--s));
   width: calc(37 * var(--s));
   min-width: 32px;
   aspect-ratio: 37 / 28;
@@ -298,7 +301,7 @@
   font-family: var(--font-cond, var(--font-display));
   font-stretch: 80%;
   font-size: max(14px, calc(13.5 * var(--s)));
-  color: #e6ebf2;
+  color: var(--blue-label);
 
   a {
     color: inherit;
@@ -317,17 +320,25 @@
   }
 }
 
-.reach__email {
+.reach__line .reach__email {
   text-transform: uppercase;
+  color: var(--beige);
 }
 
 .reach__sep {
-  color: #e6ebf2;
+  color: var(--blue-label);
 }
 
+// The logo file is used as a mask so the R is a flat beige mark (same as the header).
 .reach__logo {
-  height: calc(34 * var(--s));
+  flex: none;
+  height: calc(32 * var(--s));
   min-height: 28px;
+  aspect-ratio: 31 / 47;
+  margin-inline-start: 3px;
+  background: var(--beige);
+  mask: var(--logo) center / 100% 100% no-repeat;
+  -webkit-mask: var(--logo) center / 100% 100% no-repeat;
 }
 
 .reach__mark {
@@ -341,7 +352,8 @@
 /* ---------- Tagline band ---------- */
 .band {
   margin: 0;
-  padding: calc(3 * var(--s)) 16px;
+  padding: calc(1 * var(--s)) 16px;
+  line-height: 1.3;
   background: var(--beige);
   text-align: center;
   overflow: hidden;
@@ -352,14 +364,14 @@
   font-family: var(--font-display);
   font-weight: 300;
   font-size: max(14px, calc(15 * var(--s)));
-  letter-spacing: 0.22em;
-  color: #6f655c;
+  letter-spacing: 0.26em;
+  color: #7a6f65;
   white-space: nowrap;
 }
 
 /* ---------- Bottom navigation ---------- */
 .bottom-nav {
-  padding: calc(20 * var(--s)) 24px calc(14 * var(--s));
+  padding: calc(18 * var(--s)) 24px calc(14 * var(--s));
 
   ul {
     list-style: none;
@@ -369,8 +381,6 @@
     flex-wrap: wrap;
     justify-content: center;
     row-gap: 6px;
-    // Sketch: nav sits slightly right of centre.
-    padding-inline-end: calc(150 * var(--s));
   }
 
   li + li::before {
@@ -396,10 +406,6 @@
 }
 
 @media (max-width: 760px) {
-  .lead__title {
-    padding-inline-end: 0;
-  }
-
   .reach {
     flex-direction: column;
 
@@ -422,9 +428,5 @@
   .band__text {
     white-space: normal;
     letter-spacing: 0.1em;
-  }
-
-  .bottom-nav ul {
-    padding-inline-end: 0;
   }
 }
