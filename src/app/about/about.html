@@ -1,0 +1,106 @@
+@if (content(); as c) {
+  <main class="about" aria-labelledby="about-title">
+    <!-- Taupe column with the image (right side, sketch 38). -->
+    <div class="about__column">
+      <figure class="about__figure">
+        <div class="about__depth about__depth--image">
+          <div class="about__image">
+            @if (c.about.image && !imageFailed()) {
+              <img [src]="c.about.image" alt="" (error)="imageFailed.set(true)" />
+            } @else {
+              <div class="about__placeholder"></div>
+            }
+          </div>
+
+          @if (c.about.lines !== false) {
+            <!--
+              The drawn lines retrace the ones in the photo (same coordinates as images/about/cover.jpg,
+              a 1024 x 1024 image shown 28px down), so the animation draws over them.
+            -->
+            <svg class="about__lines" viewBox="0 28 1024 954" preserveAspectRatio="none" aria-hidden="true">
+              <line pathLength="1" style="--d: 0" x1="222" y1="0" x2="222" y2="917" />
+              <line pathLength="1" style="--d: 1" x1="177" y1="47" x2="177" y2="818" />
+              <line pathLength="1" style="--d: 2" x1="273" y1="0" x2="273" y2="959" />
+              <line pathLength="1" style="--d: 3" x1="322" y1="156" x2="322" y2="781" />
+              <line pathLength="1" style="--d: 4" x1="392" y1="298" x2="392" y2="556" />
+              <line pathLength="1" style="--d: 1" x1="178" y1="214" x2="479" y2="214" />
+              <line pathLength="1" style="--d: 2" x1="153" y1="297" x2="391" y2="297" />
+              <line pathLength="1" style="--d: 3" x1="116" y1="511" x2="487" y2="511" />
+              <line pathLength="1" style="--d: 4" x1="111" y1="744" x2="272" y2="744" />
+              <line pathLength="1" style="--d: 5" x1="177" y1="818" x2="486" y2="818" />
+              <line pathLength="1" style="--d: 5" x1="40" y1="862" x2="610" y2="862" />
+              <line pathLength="1" style="--d: 6" x1="40" y1="862" x2="193" y2="727" />
+              <circle pathLength="1" style="--d: 3" cx="272" cy="318" r="51" />
+              <circle pathLength="1" style="--d: 4" cx="332" cy="350" r="60" />
+              <circle pathLength="1" style="--d: 5" cx="181" cy="511" r="86" />
+              <circle pathLength="1" style="--d: 6" cx="271" cy="703" r="49" />
+            </svg>
+          }
+        </div>
+
+        <figcaption class="about__caption">
+          <span class="about__caption-brand">{{ c.about.captionBrand }}</span>
+          <span class="about__caption-tag">{{ c.about.caption }}</span>
+          <span class="about__caption-en">ROTEM</span>
+        </figcaption>
+
+        <!-- Copper R mark in the image's bottom corner. -->
+        <svg class="about__mark" viewBox="0 0 200 280" aria-hidden="true">
+          <defs>
+            <linearGradient id="about-copper" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#7a5a48" />
+              <stop offset="0.5" stop-color="#b98f78" />
+              <stop offset="1" stop-color="#6e4d3d" />
+            </linearGradient>
+          </defs>
+          <path
+            fill="url(#about-copper)"
+            d="M62 4C132 0 176 38 166 82C156 124 112 144 52 142C98 130 124 106 126 74C128 40 104 14 62 4Z"
+          />
+          <path
+            fill="url(#about-copper)"
+            d="M44 146C64 196 104 230 164 268L174 274C180 244 164 216 132 204C96 192 66 176 44 146Z"
+          />
+        </svg>
+      </figure>
+    </div>
+
+    <div class="about__content">
+      <div class="about__text">
+        <h1 id="about-title" class="about__title" [attr.aria-label]="c.about.title">
+          @for (ch of titleLetters(); track $index; let i = $index) {
+            <span class="about__title-letter" [style.--l]="i" aria-hidden="true">{{ ch }}</span>
+          }
+        </h1>
+
+        @for (para of paragraphs(); track $index) {
+          <p class="about__para">
+            @for (line of para; track line.i) {
+              <span class="about__line"><span class="about__line-in" [style.--i]="line.i">{{ line.text }}</span></span>
+              {{ ' ' }}
+            }
+          </p>
+        }
+
+        @if (c.about.signature) {
+          <img class="about__signature" [src]="c.about.signature" alt="Rotem" />
+        }
+      </div>
+
+      <nav class="about__nav" aria-label="ניווט באתר">
+        <ul>
+          @for (item of c.menu; track item.target; let i = $index) {
+            <li [style.--n]="i">
+              <a
+                href="#"
+                [attr.aria-current]="siteNav.isActive(item.target) ? 'page' : null"
+                (click)="$event.preventDefault(); siteNav.go(item.target)"
+                >{{ item.label }}</a
+              >
+            </li>
+          }
+        </ul>
+      </nav>
+    </div>
+  </main>
+}

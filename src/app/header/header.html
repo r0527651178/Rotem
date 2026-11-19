@@ -1,0 +1,100 @@
+<header
+  class="header"
+  [class.header--scrolled]="scrolled()"
+  [class.header--open]="menuOpen()"
+  [class.header--transparent]="transparent()"
+>
+  <button
+    type="button"
+    class="burger"
+    [attr.aria-expanded]="menuOpen()"
+    aria-controls="site-menu"
+    [attr.aria-label]="menuOpen() ? 'סגירת תפריט' : 'פתיחת תפריט'"
+    (click)="toggleMenu()"
+  >
+    <span class="burger__line burger__line--1"></span>
+    <span class="burger__line burger__line--2"></span>
+    <span class="burger__line burger__line--3"></span>
+  </button>
+
+  <a class="brand" href="#" (click)="$event.preventDefault(); go('top')" aria-label="ROTEM - עמוד הבית">
+    <!-- The copper R as a flat beige mark: the logo file is used as a mask. -->
+    <span class="brand__mark" aria-hidden="true" [style.--logo]="'url(' + menuLogo() + ')'"></span>
+    <span class="brand__text">
+      <span class="brand__he">רותם הדמיות אדריכליות</span>
+      <span class="brand__en">ROTEM</span>
+    </span>
+  </a>
+</header>
+
+<div
+  id="site-menu"
+  class="menu"
+  [class.menu--open]="menuOpen()"
+  [attr.aria-hidden]="!menuOpen()"
+  [attr.inert]="menuOpen() ? null : ''"
+>
+  <!-- Beige strip on the left; clicking it closes the menu. -->
+  <div class="menu__strip" (click)="toggleMenu()" aria-hidden="true"></div>
+
+  <div class="menu__panel">
+    <div class="menu__brand">
+      <div class="menu__logo">
+        <!-- Thin architectural construction lines drawn around the logo. -->
+        <span class="grid grid--h" style="--x: 3.7%; --y: 27%; --len: 96%; --d: 0"></span>
+        <span class="grid grid--h" style="--x: 37%; --y: 61%; --len: 50%; --d: 1"></span>
+        <span class="grid grid--h" style="--x: 0%; --y: 94%; --len: 96%; --d: 2"></span>
+        <span class="grid grid--v" style="--x: 18%; --y: 11%; --len: 83%; --d: 1"></span>
+        <span class="grid grid--v" style="--x: 32%; --y: 18%; --len: 73%; --d: 2"></span>
+        <span class="grid grid--v" style="--x: 37.6%; --y: 12%; --len: 49%; --d: 3"></span>
+        <span class="grid grid--v" style="--x: 75.7%; --y: 11%; --len: 83%; --d: 0"></span>
+        <span class="grid grid--v" style="--x: 81%; --y: 0%; --len: 100%; --d: 2"></span>
+        @if (menuLogo() && !menuLogoFailed()) {
+          <img class="menu__logo-img" [src]="menuLogo()" alt="ROTEM" (error)="menuLogoFailed.set(true)" />
+        } @else {
+          <!-- Temporary copper R until images/logo-menu.png is added. -->
+          <svg class="menu__logo-img" viewBox="0 0 200 280" role="img" aria-label="ROTEM">
+            <defs>
+              <linearGradient id="copper" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#4a2a1c" />
+                <stop offset="0.3" stop-color="#b9805e" />
+                <stop offset="0.5" stop-color="#f4d6bf" />
+                <stop offset="0.68" stop-color="#a86d4c" />
+                <stop offset="1" stop-color="#3a1f14" />
+              </linearGradient>
+            </defs>
+            <path
+              fill="url(#copper)"
+              d="M62 4C132 0 176 38 166 82C156 124 112 144 52 142C98 130 124 106 126 74C128 40 104 14 62 4Z"
+            />
+            <path
+              fill="url(#copper)"
+              d="M44 146C64 196 104 230 164 268L174 274C180 244 164 216 132 204C96 192 66 176 44 146Z"
+            />
+          </svg>
+        }
+      </div>
+
+      <p class="menu__caption">
+        <span class="menu__caption-he">רותם</span>
+        <span class="menu__caption-tag">{{ menuTagline() }}</span>
+        <span class="menu__caption-en">ROTEM</span>
+      </p>
+    </div>
+
+    <nav class="menu__nav" aria-label="תפריט ראשי">
+      <ul class="menu__list">
+        @for (item of nav(); track item.target; let i = $index) {
+          <li class="menu__item" [style.--i]="i">
+            <a
+              href="#"
+              [attr.aria-current]="siteNav.isActive(item.target) ? 'page' : null"
+              (click)="$event.preventDefault(); go(item.target)"
+              >{{ item.label }}</a
+            >
+          </li>
+        }
+      </ul>
+    </nav>
+  </div>
+</div>

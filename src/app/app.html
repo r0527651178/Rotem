@@ -1,0 +1,15 @@
+@if (content(); as c) {
+  <app-header
+    [logo]="c.logo"
+    [menuLogo]="c.menuLogo"
+    [menuTagline]="c.menuTagline"
+    [nav]="c.menu"
+    [transparent]="transparentHeader()"
+  />
+  <router-outlet />
+  <app-back-to-top />
+} @else {
+  <div class="loader" aria-label="טוען">
+    <span class="loader__mark">R</span>
+  </div>
+}

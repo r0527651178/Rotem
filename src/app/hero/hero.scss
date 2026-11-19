@@ -1,0 +1,257 @@
+:host {
+  --scroll: 0;
+  display: block;
+}
+
+.hero {
+  position: relative;
+  height: max(520px, 100svh);
+  padding-top: var(--header-h);
+  overflow: hidden;
+  background: #111;
+}
+
+.hero__stage {
+  position: absolute;
+  inset: var(--header-h) 0 0 0;
+  overflow: hidden;
+  // Gentle parallax: the image drifts slower than the page while scrolling.
+  transform: translate3d(0, calc(var(--scroll) * 0.35px), 0);
+  will-change: transform;
+}
+
+/* ---------- Slides: right-to-left wipe + Ken Burns ---------- */
+.slide {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  clip-path: inset(0 0 0 100%);
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transform: scale(1.18);
+  }
+
+  &--active {
+    z-index: 2;
+    clip-path: inset(0 0 0 0);
+    transition: clip-path var(--transition) var(--ease-in-out);
+
+    img {
+      transform: scale(1);
+      transition: transform calc(var(--interval) + var(--transition)) cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+  }
+
+  &--leaving {
+    z-index: 1;
+    clip-path: inset(0 0 0 0);
+
+    img {
+      transform: scale(1) translateX(-12%);
+      filter: brightness(0.6);
+      transition:
+        transform var(--transition) var(--ease-in-out),
+        filter var(--transition) var(--ease-in-out);
+    }
+  }
+}
+
+.hero__shade {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  background:
+    linear-gradient(to top, rgba(0, 0, 0, 0.45), transparent 40%),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.25), transparent 25%);
+}
+
+.hero__placeholder {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: var(--beige);
+  background:
+    radial-gradient(circle at 70% 30%, #3b342e, transparent 60%),
+    linear-gradient(135deg, #1c1a18, #2c2723);
+  font-size: 18px;
+  letter-spacing: 0.05em;
+
+  code {
+    direction: ltr;
+    display: inline-block;
+    color: var(--cream);
+  }
+}
+
+/* ---------- Tagline pill ---------- */
+.tagline {
+  position: absolute;
+  z-index: 5;
+  left: 50%;
+  bottom: 11%;
+  width: min(1140px, 90vw);
+  transform: translate(-50%, calc(var(--scroll) * -0.15px));
+  opacity: calc(1 - var(--scroll) / 500);
+}
+
+.tagline__text {
+  margin: 0;
+  padding: 0.55em 1.6em;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  column-gap: 0.55em;
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(17px, 2.1vw, 34px);
+  letter-spacing: 0.14em;
+  color: #1a1a1a;
+  background: var(--beige);
+  border-radius: 0 999px 999px 0;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+  transform-origin: right center;
+  animation: pill-in 1.1s var(--ease-out) 0.9s both;
+}
+
+.tagline__word {
+  display: inline-block;
+  animation: word-in 0.9s var(--ease-out) both;
+  animation-delay: calc(1.4s + var(--w) * 0.09s);
+}
+
+@keyframes pill-in {
+  from {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+  to {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+@keyframes word-in {
+  from {
+    opacity: 0;
+    transform: translateY(70%);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+
+/* ---------- Progress dots ---------- */
+.dots {
+  position: absolute;
+  z-index: 6;
+  bottom: 4%;
+  inset-inline-start: clamp(20px, 3.5vw, 64px);
+  display: flex;
+  gap: 10px;
+  animation: fade-in 1s ease 2s both;
+}
+
+.dot {
+  position: relative;
+  width: 44px;
+  height: 18px;
+  padding: 0;
+  background: none;
+  border: 0;
+  cursor: pointer;
+
+  &::before,
+  .dot__fill {
+    content: '';
+    position: absolute;
+    inset-inline: 0;
+    top: 50%;
+    height: 2px;
+    margin-top: -1px;
+    background: rgba(255, 253, 244, 0.35);
+  }
+
+  .dot__fill {
+    background: var(--cream);
+    transform: scaleX(0);
+    transform-origin: right;
+  }
+
+  &--active .dot__fill {
+    animation: progress var(--interval) linear forwards;
+  }
+}
+
+@keyframes progress {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* ---------- Scroll cue ---------- */
+.scroll-cue {
+  position: absolute;
+  z-index: 6;
+  bottom: 3.2%;
+  inset-inline-end: clamp(20px, 3.5vw, 64px);
+  width: 26px;
+  height: 42px;
+  border: 1px solid rgba(255, 253, 244, 0.7);
+  border-radius: 14px;
+  background: none;
+  cursor: pointer;
+  animation: fade-in 1s ease 2.2s both;
+
+  span {
+    position: absolute;
+    left: 50%;
+    top: 8px;
+    width: 3px;
+    height: 8px;
+    margin-left: -1.5px;
+    border-radius: 2px;
+    background: var(--cream);
+    animation: wheel 1.8s var(--ease-in-out) infinite;
+  }
+}
+
+@keyframes wheel {
+  0% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .tagline {
+    bottom: 14%;
+  }
+  .tagline__text {
+    border-radius: 0 28px 28px 0;
+  }
+  .scroll-cue {
+    display: none;
+  }
+}

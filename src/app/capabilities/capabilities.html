@@ -1,0 +1,105 @@
+﻿<section id="capabilities" class="caps">
+  <h2 class="caps__title" appReveal="fade" [attr.aria-label]="title()">
+    @for (ch of letters(); track $index; let i = $index) {
+      <span class="caps__letter" [style.--l]="i" aria-hidden="true">{{ ch }}</span>
+    }
+  </h2>
+
+  @for (cap of items(); track cap.id; let odd = $odd) {
+    @let open = openId() === cap.id;
+    @let gallery = visible(cap.gallery);
+    @let textLeft = cap.layout ? cap.layout === 'text-left' : odd;
+    @let hasExtra = !!cap.extraImage && !failed().has(cap.extraImage);
+
+    <article
+      class="cap"
+      [id]="cap.id"
+      [class.cap--reverse]="textLeft"
+      [class.cap--open]="open"
+      [class.cap--extra-side]="hasExtra && cap.extraPosition !== 'below'"
+      [class.cap--extra-below]="hasExtra && cap.extraPosition === 'below'"
+    >
+      <!-- In RTL the first grid column is on the right. Default: text right / image left. -->
+      <div class="cap__body" [appReveal]="textLeft ? 'left' : 'right'">
+        <h3 class="cap__title" [style.--len]="(cap.title + (cap.titleLatin ? ' ' + cap.titleLatin : '')).length">
+          {{ cap.title }}
+          @if (cap.titleLatin) {
+            <span class="cap__title-latin">{{ cap.titleLatin }}</span>
+          }
+        </h3>
+        @if (cap.subtitle) {
+          <span class="cap__subtitle">{{ cap.subtitle }}</span>
+        }
+        <p class="cap__text">{{ cap.text }}</p>
+      </div>
+
+      <div class="cap__media" [appReveal]="textLeft ? 'right' : 'left'" [revealDelay]="120">
+        <button
+          type="button"
+          class="cap__toggle"
+          [class.cap__toggle--open]="open"
+          [attr.aria-expanded]="cap.galleryPage ? null : open"
+          [attr.aria-controls]="'gallery-' + cap.id"
+          [attr.aria-label]="cap.galleryPage ? 'מעבר לגלריית ' + cap.title : (open ? 'סגירת גלריית ' : 'פתיחת גלריית ') + cap.title"
+          (click)="activate(cap)"
+        >
+          <svg viewBox="0 0 40 24" aria-hidden="true">
+            <!-- Solid arrow as in the sketch. -->
+            <path d="M2 12 17.5 2 15 9.6H38v4.8H15l2.5 7.6Z" fill="currentColor" />
+          </svg>
+        </button>
+
+        <div class="cap__frame" [style.aspect-ratio]="cap.aspect || null" (click)="activate(cap)">
+          @if (!failed().has(cap.cover)) {
+            <img [src]="cap.cover" [alt]="cap.title" loading="lazy" (error)="markFailed(cap.cover)" />
+          } @else {
+            <div class="cap__placeholder">{{ cap.titleLatin ? cap.title + ' ' + cap.titleLatin : cap.title }}</div>
+          }
+        </div>
+
+        @if (hasExtra) {
+          <div class="cap__extra">
+            <img [src]="cap.extraImage" alt="" loading="lazy" (error)="markFailed(cap.extraImage!)" />
+          </div>
+        }
+      </div>
+
+      @if (!cap.galleryPage) {
+      <div class="cap__gallery" [id]="'gallery-' + cap.id" [attr.aria-hidden]="!open" [attr.inert]="open ? null : ''">
+        <div class="cap__gallery-inner">
+          <ul class="gallery">
+            @for (src of gallery; track src; let i = $index) {
+              <li class="gallery__item" [style.--g]="i">
+                <button type="button" (click)="openLightbox(gallery, i)" [attr.aria-label]="cap.title + ' – תמונה ' + (i + 1)">
+                  <img [src]="src" alt="" loading="lazy" (error)="markFailed(src)" />
+                </button>
+              </li>
+            } @empty {
+              <li class="gallery__empty">
+                הוסיפו תמונות לתיקייה <code>public/images/{{ cap.id }}</code>
+              </li>
+            }
+          </ul>
+        </div>
+      </div>
+      }
+    </article>
+  }
+</section>
+
+@if (lightbox(); as lb) {
+  <div class="lightbox" role="dialog" aria-modal="true" aria-label="תצוגת תמונה" (click)="closeLightbox()">
+    <button type="button" class="lightbox__close" aria-label="סגירה" (click)="closeLightbox()">×</button>
+
+    @if (lb.images.length > 1) {
+      <button type="button" class="lightbox__nav lightbox__nav--prev" aria-label="הקודמת" (click)="$event.stopPropagation(); step(-1)">›</button>
+      <button type="button" class="lightbox__nav lightbox__nav--next" aria-label="הבאה" (click)="$event.stopPropagation(); step(1)">‹</button>
+    }
+
+    @for (src of [lb.images[lb.index]]; track src) {
+      <img class="lightbox__img" [src]="src" alt="" (click)="$event.stopPropagation()" />
+    }
+
+    <span class="lightbox__count">{{ lb.index + 1 }} / {{ lb.images.length }}</span>
+  </div>
+}

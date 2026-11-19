@@ -1,0 +1,57 @@
+<section id="top" class="hero" aria-roledescription="carousel" aria-label="פרויקטים נבחרים">
+  <div class="hero__stage">
+    @for (src of visibleImages(); track src; let i = $index) {
+      <div
+        class="slide"
+        [class.slide--active]="i === index()"
+        [class.slide--leaving]="i === prev() && i !== index()"
+        [attr.aria-hidden]="i !== index()"
+      >
+        <img
+          [src]="src"
+          alt=""
+          [attr.loading]="i === 0 ? 'eager' : 'lazy'"
+          [attr.fetchpriority]="i === 0 ? 'high' : null"
+          (error)="onImageError(src)"
+        />
+      </div>
+    } @empty {
+      <div class="hero__placeholder">
+        <span>הוסיפו תמונות לתיקייה <code>public/images/hero</code></span>
+      </div>
+    }
+    <div class="hero__shade" aria-hidden="true"></div>
+  </div>
+
+  @if (words().length) {
+    <div class="tagline">
+      <p class="tagline__text">
+        @for (w of words(); track $index; let i = $index) {
+          <span class="tagline__word" [style.--w]="i">{{ w }}</span>
+        }
+      </p>
+    </div>
+  }
+
+  @if (visibleImages().length > 1) {
+    <div class="dots" role="tablist" aria-label="בחירת תמונה">
+      @for (src of visibleImages(); track src; let i = $index) {
+        <button
+          type="button"
+          role="tab"
+          class="dot"
+          [class.dot--active]="i === index()"
+          [attr.aria-selected]="i === index()"
+          [attr.aria-label]="'תמונה ' + (i + 1)"
+          (click)="goTo(i)"
+        >
+          <span class="dot__fill"></span>
+        </button>
+      }
+    </div>
+  }
+
+  <button type="button" class="scroll-cue" aria-label="גלילה ליכולות שלנו" (click)="scrollDown()">
+    <span></span>
+  </button>
+</section>

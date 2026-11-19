@@ -1,0 +1,96 @@
+<footer id="contact" class="footer">
+  <section class="lead" aria-labelledby="lead-title">
+    <form class="lead__form" [formGroup]="form" (ngSubmit)="submit()" novalidate appReveal="fade">
+      <h2 id="lead-title" class="lead__title">{{ contact().title }}</h2>
+
+      <div class="field" style="--f: 0" [class.field--filled]="form.controls.name.value" [class.field--error]="showError('name')">
+        <label class="field__label" for="lead-name">שם מלא</label>
+        <span class="field__line">
+          <input id="lead-name" class="field__input" formControlName="name" autocomplete="name" maxlength="80"
+            [attr.aria-invalid]="showError('name')" aria-describedby="lead-name-err" />
+        </span>
+        <span id="lead-name-err" class="field__error" role="alert">{{ showError('name') ? 'נא למלא שם' : '' }}</span>
+      </div>
+
+      <div class="field" style="--f: 1" [class.field--filled]="form.controls.phone.value" [class.field--error]="showError('phone') || missingReach()">
+        <label class="field__label" for="lead-phone">טלפון</label>
+        <span class="field__line">
+          <input id="lead-phone" class="field__input" type="tel" formControlName="phone" autocomplete="tel" inputmode="tel" dir="ltr"
+            [attr.aria-invalid]="showError('phone')" aria-describedby="lead-phone-err" />
+        </span>
+        <span id="lead-phone-err" class="field__error" role="alert">
+          {{ showError('phone') ? 'מספר טלפון לא תקין' : missingReach() ? 'נא להשאיר טלפון או אימייל' : '' }}
+        </span>
+      </div>
+
+      <div class="field" style="--f: 2" [class.field--filled]="form.controls.email.value" [class.field--error]="showError('email') || missingReach()">
+        <label class="field__label" for="lead-email">אימייל</label>
+        <span class="field__line">
+          <input id="lead-email" class="field__input" type="email" formControlName="email" autocomplete="email" dir="ltr" maxlength="120"
+            [attr.aria-invalid]="showError('email')" aria-describedby="lead-email-err" />
+        </span>
+        <span id="lead-email-err" class="field__error" role="alert">{{ showError('email') ? 'כתובת אימייל לא תקינה' : '' }}</span>
+      </div>
+
+      <div class="field field--choice" style="--f: 3" [class.field--filled]="form.controls.type.value" role="radiogroup" aria-labelledby="lead-type-label">
+        <span id="lead-type-label" class="field__label">סוג פרויקט —</span>
+        <span class="choices">
+          @for (t of contact().projectTypes; track t; let last = $last) {
+            <button type="button" class="choice" role="radio" [attr.aria-checked]="form.controls.type.value === t"
+              [class.choice--on]="form.controls.type.value === t" (click)="selectType(t)">{{ t }}</button>
+            @if (!last) {
+              <span class="choices__sep" aria-hidden="true">/</span>
+            }
+          }
+        </span>
+        <span class="field__line field__line--short" aria-hidden="true"></span>
+      </div>
+
+      <div class="lead__actions" style="--f: 4">
+        <button type="submit" class="lead__submit">{{ contact().submitLabel }}</button>
+        <p class="lead__status" role="status">
+          @if (status() === 'sent') {
+            תודה! חלון המייל נפתח – נשאר רק ללחוץ על "שליחה".
+          }
+        </p>
+      </div>
+    </form>
+  </section>
+
+  <div class="reach" appReveal="up">
+    <button type="button" class="reach__top" aria-label="חזרה לראש העמוד" (click)="goTop()">
+      <svg viewBox="0 0 24 40" aria-hidden="true"><path d="M12 2 22 16h-7v22H9V16H2Z" fill="currentColor" /></svg>
+    </button>
+
+    <p class="reach__line">
+      <span>{{ contact().intro }}</span>
+      <span class="reach__sep" aria-hidden="true">|</span>
+      <a [href]="telHref()" dir="ltr">{{ contact().phone }}</a>
+      <span class="reach__sep" aria-hidden="true">|</span>
+      <a [href]="mobileHref()" dir="ltr">{{ contact().mobile }}</a>
+      <span class="reach__sep" aria-hidden="true">|</span>
+      <a [href]="'mailto:' + contact().email" class="reach__email" dir="ltr">{{ contact().email }}</a>
+    </p>
+
+    @if (logo() && !logoFailed()) {
+      <img class="reach__logo" [src]="logo()" alt="ROTEM" (error)="logoFailed.set(true)" />
+    } @else {
+      <span class="reach__mark" aria-hidden="true">R</span>
+    }
+  </div>
+
+  @if (tagline()) {
+    <p class="band"><span class="band__text">{{ tagline() }}</span></p>
+  }
+
+  <nav class="bottom-nav" aria-label="ניווט תחתון">
+    <ul>
+      @for (item of nav(); track item.target) {
+        <li>
+          <a href="#" [attr.aria-current]="siteNav.isActive(item.target) ? 'page' : null"
+            (click)="$event.preventDefault(); siteNav.go(item.target)">{{ item.label }}</a>
+        </li>
+      }
+    </ul>
+  </nav>
+</footer>

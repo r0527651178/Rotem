@@ -1,0 +1,181 @@
+@if (content(); as c) {
+  @if (page(); as p) {
+    <main class="gp" [class.gp--dark]="p.theme === 'dark'" [class.gp--beige]="p.theme === 'beige'">
+      <header class="gp__head">
+        <h1 class="gp__title">
+          {{ p.title }}
+          @if (p.titleLatin) {
+            <span class="gp__title-latin" lang="en">{{ p.titleLatin }}</span>
+          }
+        </h1>
+
+        @if (p.categories.length > 1) {
+        <div class="gp__tabs" role="tablist" [attr.aria-label]="'סוג ' + p.title">
+          @for (cat of p.categories; track cat.id; let last = $last) {
+            <button
+              type="button"
+              role="tab"
+              class="gp__tab"
+              [class.gp__tab--on]="cat.id === category()?.id"
+              [attr.aria-selected]="cat.id === category()?.id"
+              aria-controls="gp-grid"
+              (click)="selectTab(cat.id)"
+            >
+              {{ cat.label }}
+            </button>
+            @if (!last) {
+              <span class="gp__tabs-sep" aria-hidden="true"></span>
+            }
+          }
+        </div>
+        }
+      </header>
+
+      <section
+        id="gp-grid"
+        class="gp__grid"
+        [attr.role]="p.categories.length > 1 ? 'tabpanel' : null"
+        [attr.aria-label]="category()?.label"
+      >
+          @for (block of blocks(); track $index) {
+            <div class="mosaic" [class.mosaic--plans]="block.captioned" [class.mosaic--bands]="block.bands" [style.--aspect]="block.aspect">
+              @for (tile of block.tiles; track tile.src) {
+                @let missing = failed().has(tile.src);
+                @if (tile.frame; as f) {
+                  <span
+                    class="tile-frame"
+                    aria-hidden="true"
+                    [style.--l.%]="f.left"
+                    [style.--t.%]="f.top"
+                    [style.--w.%]="f.width"
+                    [style.--h.%]="f.height"
+                    [style.--d]="tile.index % 7"
+                  ></span>
+                }
+                <button
+                  type="button"
+                  class="tile"
+                  [class.tile--wide]="tile.wide"
+                  [class.tile--missing]="missing"
+                  [class.tile--gone]="missing && !dev"
+                  [class.tile--plan]="!!tile.caption && !tile.caption.band"
+                  [class.tile--card]="!!tile.sheets"
+                  [class.tile--cover]="!!tile.cover"
+                  [style.z-index]="tile.z ?? null"
+                  [style.--l.%]="tile.left"
+                  [style.--t.%]="tile.top"
+                  [style.--w.%]="tile.width"
+                  [style.--h.%]="tile.height"
+                  [style.--ratio]="tile.ratio"
+                  [style.--d]="tile.index % 7"
+                  [attr.aria-label]="(tile.project.title || fullTitle()) + (block.bands && (tile.project.views ?? 1) > 1 ? ', עמוד ' + tile.view : '')"
+                  (click)="open(tile)"
+                >
+                  @if (!missing) {
+                    <img class="tile__img" [src]="tile.src" [style.object-position]="tile.pos ?? null" alt="" loading="lazy" decoding="async" (error)="markFailed(tile.src)" />
+                  } @else {
+                    <span class="tile__placeholder" aria-hidden="true">
+                      <code dir="ltr">{{ tile.src }}</code>
+                    </span>
+                  }
+                  <span class="tile__shade" aria-hidden="true"></span>
+                  <span class="tile__title" aria-hidden="true">{{ tile.project.title }}</span>
+                  @if ((tile.project.views ?? 1) > 1) {
+                    <span class="tile__views" aria-hidden="true">{{ tile.project.views }}</span>
+                  }
+                </button>
+                @if (tile.sheets; as s) {
+                  <span
+                    class="tile-sheets"
+                    aria-hidden="true"
+                    [style.--l.%]="tile.left"
+                    [style.--t.%]="tile.top"
+                    [style.--w.%]="tile.width"
+                    [style.--h.%]="tile.height"
+                    [style.--sheet-1]="s[0]"
+                    [style.--sheet-2]="s[1]"
+                    [style.--d]="tile.index % 7"
+                  ></span>
+                }
+                @if (tile.caption; as cap) {
+                  <span
+                    class="tile-caption"
+                    [class.tile-caption--over]="cap.over"
+                    [class.tile-caption--band]="cap.band"
+                    aria-hidden="true"
+                    [style.--l.%]="cap.left"
+                    [style.--t.%]="cap.top"
+                    [style.--w.%]="cap.width"
+                    [style.text-align]="cap.align"
+                    [style.--d]="tile.index % 7"
+                  ><span>{{ tile.project.title }}</span></span>
+                }
+              }
+            </div>
+          } @empty {
+            <p class="gp__empty">התמונות יעלו בקרוב</p>
+          }
+      </section>
+    </main>
+
+    <app-site-footer [contact]="c.contact" [tagline]="c.hero.tagline" [nav]="c.menu" [logo]="c.logo" />
+
+    @if (viewer(); as v) {
+      <div class="viewer" role="dialog" aria-modal="true" [attr.aria-label]="v.project.title" (click)="close()">
+        <h2 class="viewer__title" (click)="$event.stopPropagation()">{{ v.project.title }}</h2>
+
+        <button type="button" class="viewer__close" aria-label="סגירה" (click)="close()">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5 5 19" /></svg>
+        </button>
+
+        <div
+          class="viewer__stage"
+          (click)="$event.stopPropagation()"
+          (pointerdown)="onPointerDown($event)"
+          (pointerup)="onPointerUp($event)"
+        >
+          @let src = v.images[v.index];
+          @if (!failed().has(src)) {
+            <img class="viewer__img" [src]="src" alt="" (load)="playViewIn($event)" (error)="markFailed(src)" />
+          } @else {
+            <div class="viewer__placeholder">
+              <code dir="ltr">{{ src }}</code>
+            </div>
+          }
+
+          @if (v.images.length > 1) {
+            <button type="button" class="viewer__nav viewer__nav--prev" aria-label="המבט הקודם" (click)="step(-1)">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4l8 8-8 8" /></svg>
+            </button>
+            <button type="button" class="viewer__nav viewer__nav--next" aria-label="המבט הבא" (click)="step(1)">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 4l-8 8 8 8" /></svg>
+            </button>
+          }
+        </div>
+
+        @if (v.images.length > 1) {
+          <div class="viewer__thumbs" (click)="$event.stopPropagation()">
+            @for (src of v.images; track src; let i = $index) {
+              <button
+                type="button"
+                class="viewer__thumb"
+                [class.viewer__thumb--on]="i === v.index"
+                [attr.aria-label]="'מבט ' + (i + 1)"
+                [attr.aria-current]="i === v.index"
+                (click)="goToView(i)"
+              >
+                @if (!failed().has(src)) {
+                  <img [src]="src" alt="" loading="lazy" (error)="markFailed(src)" />
+                }
+              </button>
+            }
+          </div>
+        }
+      </div>
+    }
+  } @else {
+    <main class="gp gp--missing">
+      <p class="gp__empty">הגלריה לא נמצאה</p>
+    </main>
+  }
+}

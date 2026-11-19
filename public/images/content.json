@@ -1,0 +1,404 @@
+{
+  "logo": "images/logo.png",
+  "menuLogo": "images/logo-menu.png",
+  "menuTagline": "הדמיות אדריכליות ועיצוב גרפי",
+  "menu": [
+    { "label": "ראשי", "target": "top" },
+    { "label": "אודות", "target": "/about" },
+    { "label": "הדמיות", "target": "visualization" },
+    { "label": "שימור", "target": "conservation" },
+    { "label": "בתי כנסת", "target": "synagogues" },
+    { "label": "תוכניות מכר", "target": "sales-plans" },
+    { "label": "AI", "target": "ai" },
+    { "label": "ברושור פרויקט נדל\"ן", "target": "brochure" },
+    { "label": "דברו אתנו", "target": "contact" }
+  ],
+  "about": {
+    "title": "אודות",
+    "image": "images/about/cover.jpg",
+    "lines": true,
+    "caption": "הדמיות אדריכליות ועיצוב גרפי",
+    "captionBrand": "רותם",
+    "signature": "images/about/signature.png",
+    "paragraphs": [
+      [
+        "תמיד עניין אותי הרגע הזה שבו רעיון הופך למשהו שאפשר ממש לראות ולהרגיש.",
+        "החיבור בין קו, חומר, אור ותחושה — הוא מה שמוביל אותי בכל פרויקט."
+      ],
+      [
+        "אני יוצרת הדמיות אדריכליות מתוך הסתכלות קצת אחרת:",
+        "לא רק איך המבנה ייראה, אלא איך הוא ירגיש."
+      ],
+      [
+        "עם רקע בעיצוב גרפי וחשיבה ויזואלית רחבה, אני ניגשת לכל פרויקט כמו סיפור",
+        "שצריך לקבל ביטוי מדויק —",
+        "דרך קומפוזיציה, תאורה, חומרים ואווירה."
+      ],
+      [
+        "אני עובדת עם אדריכלים ויזמים שמחפשים יותר מהדמיה \"יפה\" —",
+        "כאלה שמבינים שהדרך להציג פרויקט היא חלק בלתי נפרד מהערך שלו."
+      ],
+      [
+        "בתהליך העבודה חשוב לי לשמור על תקשורת פתוחה, הבנה עמוקה של הצרכים,",
+        "ודיוק בפרטים הקטנים —",
+        "כי שם נמצא ההבדל בין הדמיה טובה להדמיה שמרגישים."
+      ],
+      [
+        "בסופו של דבר, אני לא רק מציגה פרויקטים —",
+        "אני עוזרת להם לקבל נוכחות."
+      ]
+    ]
+  },
+  "hero": {
+    "intervalMs": 6000,
+    "tagline": "אדריכלות מתחילה בדמיון – אנחנו נותנים לה צורה!",
+    "images": [
+      "images/hero/1.jpg",
+      "images/hero/2.jpg",
+      "images/hero/3.jpg",
+      "images/hero/4.jpg",
+      "images/hero/5.jpg"
+    ]
+  },
+  "capabilitiesTitle": "היכולות שלנו",
+  "capabilities": [
+    {
+      "id": "visualization",
+      "title": "הדמיות",
+      "subtitle": "חוץ ופנים",
+      "text": "הדמיות הן כלי מרכזי להמחשת רעיונות ותכניות בצורה מדויקת ומרשימה. באמצעות שילוב של דיוק אדריכלי, חשיבה עיצובית וירידה לפרטים, אנו יוצרים הדמיות איכותיות המשקפות את חזון הפרויקט באופן אמין, אסתטי ומעורר השראה.",
+      "cover": "images/visualization/cover.jpg",
+      "gallery": [],
+      "galleryPage": {
+        "title": "הדמיות",
+        "categories": [
+          {
+            "id": "exterior",
+            "label": "חוץ",
+            "folder": "images/visualization/exterior",
+            "projects": [
+              { "title": "אלקבץ", "folder": "alkabetz" },
+              { "title": "מיכלין", "folder": "michlin" },
+              { "title": "מלון דירות\nברח' ההסתדרות", "folder": "hahistadrut-hotel" },
+              { "title": "פינוי בינוי מאפו", "folder": "mapu-renewal" },
+              { "title": "קראל נטר", "folder": "kral-neter" },
+              { "title": "שדרות אשכול תמ\"א 38", "folder": "eshkol-tama38" },
+
+              { "title": "ירמיהו 52", "folder": "yirmiyahu-52" },
+              { "title": "כנפי נשרים נג'ארה", "folder": "kanfei-nesharim" },
+              { "title": "לינקולן", "folder": "lincoln" },
+              { "title": "דו משפחתי בישוב במרחב", "folder": "two-family" },
+              { "title": "מיכלין", "folder": "michlin-2" },
+
+              { "title": "עין גדי", "folder": "ein-gedi" },
+              { "title": "ירמיהו", "folder": "yirmiyahu" },
+              { "title": "מרכז חסידי סטריקוב", "folder": "strikov-center" },
+              { "title": "קנאי הגליל", "folder": "kanai-hagalil" },
+              { "title": "הרב פרנק", "folder": "harav-frank" },
+              { "title": "מבנה תעשייתי בעטרות", "folder": "atarot-industrial" },
+
+              { "title": "מרכז מסחרי עימנואל", "folder": "emmanuel-center" },
+              { "title": "שדרות בן צבי", "folder": "ben-zvi" },
+              { "title": "קרן היסוד", "folder": "keren-hayesod" },
+              { "title": "רח' אגרון", "folder": "agron" },
+              { "title": "מבוא יורם תמ\"א + שימור", "folder": "mevo-yoram" },
+              { "title": "החי\"ם", "folder": "hachaim" },
+              { "title": "שכונה בדימונה", "folder": "dimona" },
+
+              { "title": "משמר הגבול 7", "folder": "mishmar-hagvul-7" },
+              { "title": "רש\"י", "folder": "rashi" },
+              { "title": "משמר הגבול 6", "folder": "mishmar-hagvul-6" },
+              { "title": "אכסניית נוער", "folder": "youth-hostel" }
+            ]
+          },
+          {
+            "id": "interior",
+            "label": "פנים",
+            "folder": "images/visualization/interior",
+            "layout": "interior",
+            "projects": [
+              { "title": "סלון אגודת אחים", "folder": "agudat-achim-salon" },
+              { "title": "סלון מטבח בן צבי", "folder": "ben-zvi-kitchen" },
+              { "title": "חדרי הנצחה בית הגיבורים", "folder": "beit-hagiborim-memorial" },
+              { "title": "סלון מטבח כרמי הנדיב", "folder": "karmei-hanadiv-kitchen" },
+              { "title": "מבט לנוף צפחה שערי העיר", "folder": "shaarei-hair-view" },
+              { "title": "לובי רכסים", "folder": "rechasim-lobby" },
+              { "title": "בריכה על הגג במאפו", "folder": "mapu-rooftop-pool" },
+              { "title": "סלון חסידי שטראוס", "folder": "strauss-salon" },
+              { "title": "סלון נופי נחל צופים", "folder": "nachal-tzofim-salon" },
+              { "title": "ספריה בית הגיבורים", "folder": "beit-hagiborim-library" },
+              { "title": "פנים קק\"ל", "folder": "kkl-interior" },
+              { "title": "סלון קריית משה", "folder": "kiryat-moshe-salon" },
+              { "title": "סלון במרחב", "folder": "bamerchav-salon" },
+              { "title": "חדר פנימיה יקירי ירושלים", "folder": "yakirei-yerushalayim-dorm" },
+              { "title": "אודיטוריום", "folder": "auditorium" },
+              { "title": "פינת אוכל", "folder": "dining-corner" }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "conservation",
+      "title": "שימור",
+      "subtitle": "",
+      "text": "שימור מבנים עבורנו הוא חיבור מדויק בין העבר להווה – שמירה על האופי, ההיסטוריה והערכים האדריכליים, לצד התאמה לסטנדרטים עכשוויים. ברגישות, דיוק וחשיבה תכנונית מוקפדת, אנו מעניקים למבנים היסטוריים חיים חדשים תוך איזון בין אותנטיות לאסתטיקה מודרנית.",
+      "cover": "images/conservation/cover.jpg",
+      "gallery": [],
+      "galleryPage": {
+        "title": "שימור",
+        "categories": [
+          {
+            "id": "conservation",
+            "label": "שימור",
+            "folder": "images/conservation",
+            "layout": "conservation",
+            "projects": [
+              { "title": "חירם", "folder": "hiram" },
+              { "title": "הבוכרים", "folder": "habucharim" },
+              { "title": "שאול המלך", "folder": "shaul-hamelech" },
+              { "title": "פרידמן", "folder": "friedman" },
+              { "title": "מיוחס", "folder": "meyuchas" },
+              { "title": "אוהל שלצה", "folder": "ohel-shlatza" },
+              { "title": "חגיז", "folder": "hagiz" },
+              { "title": "ניסן בק", "folder": "nissan-bek" },
+              { "title": "לבוש מרדכי", "folder": "levush-mordechai" },
+              { "title": "אגריפס", "folder": "agripas" },
+              { "title": "חגי", "folder": "haggai" },
+              { "title": "יפו פינת שטראוס", "folder": "jaffa-strauss" }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "synagogues",
+      "title": "מבנים תורניים",
+      "subtitle": "",
+      "text": "הדמיית מבנים תורניים משלבת הבנה אדריכלית עם רגישות לערכים, לאווירה ולמשמעות המקום. אנו ניגשים לכל פרויקט בכבוד למסורת ולייעודו, ויוצרים שפה עיצובית המשקפת קדושה, סדר והרמוניה. באמצעות תכנון מדויק וירידה לפרטים, מתקבלת הדמיה מכובדת, נעימה ומותאמת לאופי.",
+      "cover": "images/synagogues/cover.jpg",
+      "aspect": "4 / 3",
+      "layout": "text-right",
+      "extraImage": "images/synagogues/extra.jpg",
+      "extraPosition": "side",
+      "gallery": [],
+      "galleryPage": {
+        "title": "מבנים תורניים",
+        "defaultCategory": "interior",
+        "categories": [
+          {
+            "id": "exterior",
+            "label": "חוץ",
+            "folder": "images/synagogues/exterior",
+            "layout": "synagogues-exterior",
+            "projects": [
+              { "title": "בית כנסת הגדול בנווה יעקב", "folder": "neve-yaakov" },
+              { "title": "ישיבת חיי משה", "folder": "chayei-moshe" },
+              { "title": "איילת השחר", "folder": "ayelet-hashachar", "views": 2 },
+              { "title": "בית כנסת נועם ה'", "folder": "noam-hashem" },
+
+              { "title": "בית כנסת הגר\"א שערי חסד", "folder": "hagra-shaarei-chesed", "views": 2 },
+              { "title": "בית כנסת אהבת שלום - תל ציון", "folder": "ahavat-shalom" },
+              { "title": "בית כנסת דביר", "folder": "dvir" },
+              { "title": "ישיבת מקדש מלך", "folder": "mikdash-melech" },
+
+              { "title": "מרכז תורני פסגת זאב", "folder": "merkaz-torani-pisgat-zeev" },
+              { "title": "בית שלמה במבשרת", "folder": "beit-shlomo" },
+              { "title": "ישיבת אור שמואל", "folder": "or-shmuel", "views": 2 },
+              { "title": "בית כנסת בפסגת זאב", "folder": "pisgat-zeev" }
+            ]
+          },
+          {
+            "id": "interior",
+            "label": "פנים",
+            "folder": "images/synagogues/interior",
+            "layout": "synagogues",
+            "projects": [
+              { "title": "מקדש מלך פנים", "folder": "mikdash-melech" },
+              { "title": "בית כנסת בית תפילה", "folder": "beit-tefila" },
+              { "title": "בית כנסת ביוף", "folder": "biuf" },
+              { "title": "עזרת נשים סטריקוב", "folder": "strikov-ezrat-nashim" },
+
+              { "title": "חדר אוכל יקירי", "folder": "yakirei-dining" },
+              { "title": "בית כנסת מרכז תורני", "folder": "merkaz-torani" },
+              { "title": "", "folder": "chandelier-hall" },
+              { "title": "בית מדרש אור שמואל", "folder": "or-shmuel" }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "sales-plans",
+      "title": "תוכניות מכר",
+      "subtitle": "דו ממדיות ותלת מימדיות",
+      "text": "תוכניות מכר דו־ממדיות מאפשרות הצגה ברורה, מדויקת ונגישה של החלל, עם דגש על שפה גרפית נקייה, סדר ודיוק בפרטים. לצד זאת, ניתן לשלב המחשה תלת־ממדית המעניקה עומק והבנה מלאה של הנכס, מחזקת את חוויית המשתמש ומעצימה את תהליך המכירה.",
+      "cover": "images/sales-plans/cover.jpg",
+      "aspect": "3 / 2",
+      "layout": "text-left",
+      "extraImage": "images/sales-plans/key-plan.png",
+      "extraPosition": "below",
+      "gallery": [
+        "images/sales-plans/1.jpg",
+        "images/sales-plans/2.jpg",
+        "images/sales-plans/3.jpg",
+        "images/sales-plans/4.jpg"
+      ],
+      "galleryPage": {
+        "title": "תוכניות מכר",
+        "theme": "dark",
+        "categories": [
+          {
+            "id": "2d",
+            "label": "דו ממדי",
+            "folder": "images/sales-plans/2d",
+            "layout": "sales-plans-2d",
+            "projects": [
+              { "title": "כרמי הנדיב", "folder": "karmei-hanadiv" },
+              { "title": "איתמר", "folder": "itamar" },
+              { "title": "משמר הגבול 2", "folder": "mishmar-hagvul-2" },
+              { "title": "משמר הגבול", "folder": "mishmar-hagvul" },
+              { "title": "נופי דוד המלך", "folder": "nofei-david-hamelech" },
+              { "title": "LOVE נתנאל", "folder": "netanel-love" },
+
+              { "title": "מתחם גלבוע", "folder": "gilboa" },
+              { "title": "פרויקט השושנה", "folder": "hashoshana" },
+              { "title": "שערי העיר", "folder": "shaarei-hair" },
+              { "title": "תוכניות החי\"ם", "folder": "chaim", "views": 2 },
+              { "title": "תכנון משרד", "folder": "office" },
+              { "title": "צמודי קרקע במרחב", "folder": "merhav-ground" },
+              { "title": "ציפחה", "folder": "tzipcha" }
+            ]
+          },
+          {
+            "id": "3d",
+            "label": "תלת מימדי",
+            "folder": "images/sales-plans/3d",
+            "layout": "sales-plans-3d",
+            "projects": [
+              { "title": "תוכנית קומת הסטודנטים בבית הגיבורים", "folder": "beit-hagiborim-students" },
+              { "title": "תוכנית דירה בקריית משה", "folder": "kiryat-moshe-apartment" },
+              { "title": "קומה בבניין שיח סוד", "folder": "siach-sod-floor" },
+              { "title": "תוכנית דירה בקריית משה", "folder": "kiryat-moshe-apartment-2" },
+              { "title": "הדמיית מקווה נכים", "folder": "accessible-mikveh" },
+              { "title": "דירת גן", "folder": "garden-apartment" },
+              { "title": "קומת מקוואות בבית כנסת זיו יהודה", "folder": "ziv-yehuda-mikvaot" },
+              { "title": "", "folder": "apartment-8" },
+              { "title": "קומת משרד", "folder": "office-floor" },
+              { "title": "דירה במתחם איינשטיין", "folder": "einstein-apartment" }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "ai",
+      "title": "הדמיות",
+      "titleLatin": "AI",
+      "subtitle": "",
+      "text": "הדמיות מבוססות AI מאפשרות תהליך יצירה מהיר, גמיש וחדשני, ומשלבות בין בינה מלאכותית להבנה אדריכלית ועיצובית. הן מסייעות בגיבוש קונספטים ובחינת כיווני עיצוב שונים בזמן קצר, תוך יצירת ויזואליות עשירה התומכת בשלבי התכנון המוקדמים ומייעלת את תהליך העבודה.",
+      "cover": "images/ai/cover.jpg",
+      "aspect": "16 / 9",
+      "layout": "text-right",
+      "gallery": [
+        "images/ai/1.jpg",
+        "images/ai/2.jpg",
+        "images/ai/3.jpg",
+        "images/ai/4.jpg"
+      ],
+      "galleryPage": {
+        "title": "הדמיות",
+        "titleLatin": "AI",
+        "theme": "beige",
+        "categories": [
+          {
+            "id": "all",
+            "label": "הדמיות AI",
+            "folder": "images/ai/gallery",
+            "layout": "ai",
+            "projects": [
+              { "title": "", "folder": "synagogue-arched-ark" },
+              { "title": "", "folder": "reading-nook" },
+              { "title": "", "folder": "bedroom-navy" },
+              { "title": "", "folder": "synagogue-long-hall" },
+              { "title": "", "folder": "round-lounge" },
+              { "title": "", "folder": "living-room-sofa" },
+              { "title": "", "folder": "synagogue-carved-ark" },
+              { "title": "", "folder": "kids-bedroom" },
+              { "title": "", "folder": "bedroom-desk" },
+
+              { "title": "", "folder": "girls-room" },
+              { "title": "", "folder": "living-grey-sofa" },
+              { "title": "", "folder": "kitchen-mint" },
+              { "title": "", "folder": "office" },
+              { "title": "", "folder": "kitchen-white" },
+              { "title": "", "folder": "kitchen-chandelier" },
+              { "title": "", "folder": "living-pink-sofa" },
+              { "title": "", "folder": "living-mint" },
+              { "title": "", "folder": "living-beige" },
+
+              { "title": "", "folder": "balcony-sea" },
+              { "title": "", "folder": "floor-plan" },
+              { "title": "", "folder": "glass-tower" },
+              { "title": "", "folder": "balcony-jerusalem" },
+              { "title": "", "folder": "office-building-night" },
+              { "title": "", "folder": "white-building" },
+              { "title": "", "folder": "stone-building" },
+              { "title": "", "folder": "glass-offices" },
+              { "title": "", "folder": "tower-sunset" }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "brochure",
+      "title": "ברושור פרויקט נדל״ן",
+      "subtitle": "",
+      "text": "ברושור פרויקט נדל״ן הוא כלי שיווקי ממוקד, המציג את חזון הפרויקט, יתרונות המיקום, התכנון האדריכלי ואיכות המגורים הצפויה. באמצעות שילוב של עיצוב מוקפד, הדמיות מרשימות ומידע מדויק, הברושור מעניק לרוכשים תמונה ברורה ומעוררת השראה, ומחזק את תחושת האמון והערך בפרויקט.",
+      "cover": "images/brochure/cover.jpg",
+      "aspect": "16 / 9",
+      "layout": "text-right",
+      "gallery": [
+        "images/brochure/1.jpg",
+        "images/brochure/2.jpg",
+        "images/brochure/3.jpg",
+        "images/brochure/4.jpg"
+      ],
+      "galleryPage": {
+        "title": "ברושור פרויקט נדל״ן",
+        "categories": [
+          {
+            "id": "all",
+            "label": "ברושורים",
+            "folder": "images/brochure/gallery",
+            "layout": "brochure",
+            "pages": true,
+            "projects": [
+              { "title": "עיצוב לוגו וברושור למשי יזמות ובנייה", "folder": "mashi", "views": 3 },
+              { "title": "עיצוב לוגו וברושור לנוף ביתר – הדמיות של הלקוח", "folder": "nof-beitar", "views": 2 },
+              { "title": "עיצוב לוגו וברושור לפרויקט בקק״ל", "folder": "kkl", "views": 3 },
+              { "title": "עיצוב ברושור להקדש כובהיוף", "folder": "kubhayof", "views": 3 },
+              { "title": "עיצוב ברושור לקהילת בית יוסף במולדובה – הדמיות של הלקוח", "folder": "beit-yosef-moldova", "views": 4 },
+              { "title": "עיצוב לוגו וברושור לנוף כינרת", "folder": "kinneret", "views": 5 }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "stats": [
+    { "value": 70, "label": "לקוחות" },
+    { "value": 580, "label": "הדמיות" },
+    { "value": 1350, "label": "תוכניות מכר" }
+  ],
+  "contact": {
+    "title": "”בואו נתחיל לראות את זה קורה”",
+    "email": "rotem5819@gmail.com",
+    "phone": "02-5819072",
+    "mobile": "054-8405819",
+    "intro": "אנחנו כאן לכל שאלה ויעוץ",
+    "projectTypes": ["חוץ", "פנים", "מכר", "אחר"],
+    "submitLabel": "להפוך את זה להדמיה."
+  }
+}

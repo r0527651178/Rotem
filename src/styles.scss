@@ -1,0 +1,106 @@
+:root {
+  --header-h: clamp(72px, 7.23vw, 140px);
+  --header-h-small: clamp(60px, 5vw, 84px);
+
+  --cream: #fffdf4;
+  --beige: #c2b3a3;
+  --beige-text: #c4b6a6;
+  --ink: #2f2c29;
+  --toggle-idle: #c4c0bc;
+  --toggle-hover: #dcc5b9;
+  --toggle-open: #b8946f;
+
+  --font-display: 'Heebo', 'Assistant', sans-serif;
+  --font-body: 'Assistant', 'Heebo', sans-serif;
+  // Condensed Hebrew, close to the sketches' font (used with font-stretch).
+  --font-cond: 'Noto Sans Hebrew', 'Heebo', sans-serif;
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.18, 1);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--ink);
+  background: var(--cream);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img {
+  max-width: 100%;
+}
+
+// Keep menu scroll targets clear of the fixed header.
+[id] {
+  scroll-margin-top: calc(var(--header-h-small) + 20px);
+}
+
+button {
+  font: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--beige);
+  outline-offset: 3px;
+}
+
+::selection {
+  background: var(--beige);
+  color: #000;
+}
+
+/* ---------- Scroll reveal (see reveal.directive.ts) ---------- */
+.reveal {
+  opacity: 0;
+  transition:
+    opacity 1s var(--ease-out),
+    transform 1.2s var(--ease-out),
+    filter 1.2s var(--ease-out);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+
+  &--up {
+    transform: translateY(60px);
+  }
+  &--right {
+    transform: translateX(120px);
+  }
+  &--left {
+    transform: translateX(-120px);
+  }
+  &--fade {
+    filter: blur(6px);
+  }
+
+  &.is-visible {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}

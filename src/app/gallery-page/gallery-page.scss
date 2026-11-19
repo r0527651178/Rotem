@@ -1,0 +1,799 @@
+﻿:host {
+  display: block;
+  background: var(--cream);
+}
+
+.gp {
+  // Sketch: 40px side margins on a 2000px page.
+  --gp-width: min(96vw, 1840px);
+  padding: calc(var(--header-h) + clamp(16px, 2vw, 40px)) 0 clamp(50px, 6vw, 110px);
+  overflow-x: clip;
+
+  &--missing {
+    min-height: 60svh;
+    display: grid;
+    place-items: center;
+  }
+}
+
+/* ---------- Title + tabs (sketch 13) ---------- */
+.gp__head {
+  display: grid;
+  justify-items: center;
+  gap: clamp(8px, 1vw, 18px);
+  margin-bottom: clamp(24px, 3.2vw, 60px);
+}
+
+.gp__title {
+  margin: 0;
+  overflow: hidden;
+  font-family: var(--font-cond);
+  font-stretch: 75%;
+  font-weight: 300;
+  font-size: clamp(48px, 5.2vw, 104px);
+  line-height: 1;
+  letter-spacing: 0.1em;
+  margin-inline-end: -0.1em;
+  color: var(--beige-text);
+  animation: title-in 1.1s var(--ease-out) both;
+}
+
+.gp__tabs {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  animation: fade-up 0.9s var(--ease-out) 0.35s both;
+}
+
+.gp__tabs-sep {
+  width: 1px;
+  height: 1em;
+  background: rgba(60, 50, 40, 0.3);
+}
+
+.gp__tab {
+  position: relative;
+  padding: 4px 6px;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  font-family: var(--font-cond);
+  font-stretch: 80%;
+  font-size: clamp(17px, 1.3vw, 24px);
+  letter-spacing: 0.06em;
+  color: #5a524b;
+  transition: color 0.35s;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset-inline: 6px;
+    bottom: 0;
+    height: 1px;
+    background: var(--beige-text);
+    transform: scaleX(0);
+    transition: transform 0.5s var(--ease-out);
+  }
+
+  &:hover,
+  &:focus-visible {
+    color: var(--beige-text);
+  }
+
+  &--on {
+    color: var(--beige-text);
+
+    &::after {
+      transform: scaleX(1);
+    }
+  }
+}
+
+/* ---------- Mosaic ---------- */
+.gp__grid {
+  width: var(--gp-width);
+  margin-inline: auto;
+}
+
+.gp__empty {
+  margin: 60px 0;
+  text-align: center;
+  font-size: 20px;
+  color: var(--beige-text);
+}
+
+.mosaic {
+  position: relative;
+  aspect-ratio: var(--aspect);
+
+  // Gap between consecutive sketch pages (≈15 of 1918).
+  & + & {
+    margin-top: 0.8%;
+  }
+}
+
+.tile {
+  position: absolute;
+  left: var(--l);
+  top: var(--t);
+  width: var(--w);
+  height: var(--h);
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  background: #e7dfd3;
+  cursor: zoom-in;
+  animation: tile-in 1s var(--ease-out) both;
+  animation-delay: calc(0.15s + var(--d) * 0.07s);
+}
+
+.tile__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition:
+    transform 1.2s var(--ease-out),
+    filter 0.7s var(--ease-out);
+}
+
+.tile__placeholder {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: end center;
+  padding: 12px;
+  background:
+    linear-gradient(160deg, rgba(255, 255, 255, 0.5), transparent 60%),
+    repeating-linear-gradient(-45deg, #e9e1d5 0 14px, #e2d9cc 14px 28px);
+
+  code {
+    font-size: 11px;
+    color: #8c7f71;
+    word-break: break-all;
+  }
+}
+
+// Sketch note: the hovered image darkens and the title appears, centred and large.
+.tile__shade {
+  position: absolute;
+  inset: 0;
+  background: rgba(12, 10, 8, 0.58);
+  opacity: 0;
+  transition: opacity 0.6s var(--ease-out);
+}
+
+.tile__title {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 8%;
+  text-align: center;
+  white-space: pre-line;
+  font-family: var(--font-cond);
+  font-stretch: 75%;
+  font-weight: 300;
+  font-size: clamp(22px, 2.1vw, 44px);
+  line-height: 1.25;
+  letter-spacing: 0.3em;
+  color: var(--cream);
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity 0.55s var(--ease-out),
+    transform 0.7s var(--ease-out),
+    letter-spacing 0.9s var(--ease-out);
+}
+
+.tile__views {
+  position: absolute;
+  top: 12px;
+  inset-inline-start: 12px;
+  min-width: 28px;
+  padding: 3px 8px;
+  border-radius: 14px;
+  background: rgba(0, 0, 0, 0.45);
+  color: var(--cream);
+  font-size: 13px;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+@media (hover: hover) {
+  .tile:hover,
+  .tile:focus-visible {
+    .tile__img {
+      transform: scale(1.045);
+      filter: saturate(0.85);
+    }
+    .tile__shade,
+    .tile__views {
+      opacity: 1;
+    }
+    .tile__title {
+      opacity: 1;
+      transform: none;
+      letter-spacing: 0.08em;
+    }
+  }
+}
+
+.tile:focus-visible {
+  outline: 2px solid var(--beige);
+  outline-offset: 3px;
+}
+
+/* ---------- Dark page (sales plans, sketches 27–28) ---------- */
+.gp--dark {
+  --gp-bg: #000;
+  background: var(--gp-bg);
+
+  .gp__tabs-sep {
+    background: rgba(255, 255, 255, 0.3);
+  }
+
+  .gp__tab {
+    color: #8d847a;
+
+    &:hover,
+    &:focus-visible,
+    &--on {
+      color: var(--beige-text);
+    }
+  }
+
+  .gp__empty {
+    color: #8d847a;
+  }
+}
+
+/* ---------- Beige page (AI, sketches 32–34) ---------- */
+.gp--beige {
+  --gp-bg: #bdad9e;
+  background: var(--gp-bg);
+
+  .gp__title {
+    color: #fff;
+  }
+}
+
+// "AI" after the Hebrew title: smaller, thinner and raised (sketch 32).
+.gp__title-latin {
+  display: inline-block;
+  margin-inline-start: 0.35em;
+  font-size: 0.62em;
+  letter-spacing: 0.05em;
+  vertical-align: 0.42em;
+}
+
+/* ---------- Plans: always-visible captions, coloured sheets, frames ---------- */
+.mosaic--plans {
+  // Caption size follows the mosaic width (24px on a 1918px sketch).
+  container-type: inline-size;
+}
+
+.tile--plan {
+  z-index: 1;
+  overflow: visible;
+  background: none;
+
+  .tile__img {
+    object-fit: contain;
+  }
+
+  // The caption is already on the page, so no hover title or dark veil.
+  .tile__title,
+  .tile__shade {
+    display: none;
+  }
+
+  // The plan doesn't fill its box, so a corner badge would float in the black; the viewer
+  // shows the extra views as thumbnails instead.
+  .tile__views {
+    display: none;
+  }
+
+  &.tile--missing {
+    overflow: hidden;
+  }
+}
+
+// Captioned photos (sketch 30) fill their box like the other galleries.
+.tile--plan.tile--cover {
+  overflow: hidden;
+
+  .tile__img {
+    object-fit: cover;
+  }
+}
+
+// Cards are full sheets of paper, so they fill their box.
+.tile--card .tile__img {
+  object-fit: cover;
+  // A tall sheet (plan above, key plan below) keeps its plan in view.
+  object-position: 50% 25%;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+}
+
+.tile-sheets,
+.tile-frame,
+.tile-caption {
+  position: absolute;
+  left: var(--l);
+  top: var(--t);
+  width: var(--w);
+  pointer-events: none;
+}
+
+.tile-sheets {
+  height: var(--h);
+  z-index: 0;
+  animation: tile-in 1s var(--ease-out) both;
+  animation-delay: calc(0.05s + var(--d) * 0.07s);
+
+  // The sheets are a little shorter than the card and pivot on their bottom-left corner,
+  // so they show above and to the left of the card but not below it (sketch 27).
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    transform-origin: left bottom;
+    transition: transform 0.9s var(--ease-out);
+  }
+
+  // Back sheet: lighter and tilted more.
+  &::before {
+    inset: 0 0 10% 0;
+    background: var(--sheet-2);
+    transform: translate(-1.5%, 2%) rotate(-5deg);
+  }
+
+  &::after {
+    inset: 0 0 6% 0;
+    background: var(--sheet-1);
+    transform: translate(-0.8%, 1%) rotate(-3deg);
+  }
+}
+
+.tile-frame {
+  height: var(--h);
+  z-index: 0;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  animation: fade-in 1.4s var(--ease-out) both;
+  animation-delay: calc(0.4s + var(--d) * 0.07s);
+}
+
+.tile-caption {
+  z-index: 2;
+  font-family: var(--font-cond);
+  font-stretch: 80%;
+  font-weight: 300;
+  font-size: clamp(14px, 1.25cqw, 26px);
+  line-height: 1.2;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+  color: #ddd5cb;
+  animation: fade-up 0.9s var(--ease-out) both;
+  animation-delay: calc(0.45s + var(--d) * 0.07s);
+
+  // A strip of page colour, so a caption on a frame line cuts the line (sketch 28).
+  span {
+    display: inline-block;
+    padding-inline: 0.4em;
+    background: var(--gp-bg, transparent);
+  }
+
+  &.tile-caption--over {
+    color: #fff;
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.6);
+
+    span {
+      background: none;
+    }
+  }
+}
+
+/* ---------- Brochures (sketches 35–37): pages with a band under each brochure ---------- */
+// A missing page keeps its slot on the live site, so the rest of the sketch stays in place.
+.tile--gone {
+  display: none;
+}
+
+.mosaic--bands {
+  .tile {
+    // Each slot has the page's proportions, so the page shows whole.
+    // No shadow: a transparent cover (Mashi) would show the shadow of its empty corners.
+    background: none;
+  }
+
+  // The band already names the brochure, so the page stays in view: no veil, no hover title.
+  .tile__shade,
+  .tile__title,
+  .tile__views {
+    display: none;
+  }
+}
+
+.tile-caption--band {
+  // Sketch: a 40px band, 22px letter-spaced white text, about 60px in from its end.
+  // The text sits at the band's end set by the slot (text-align from the template).
+  height: 2.05cqw;
+  line-height: 2.05cqw;
+  padding-inline: 2.2cqw;
+  background: #bcae9f;
+  color: #fff;
+  font-size: clamp(11px, 1.15cqw, 24px);
+  letter-spacing: 0.09em;
+  overflow: hidden;
+  animation-name: band-in;
+
+  span {
+    padding-inline: 0;
+    background: none;
+  }
+}
+
+// Tablet and phone: the pages stack (see "Plans on tablet and phone") and the band follows them.
+@media (max-width: 899px) {
+  // Doubled class: these rules come before the plans rules in the file and must win.
+  .mosaic--bands.mosaic--plans {
+    gap: 14px;
+
+    .tile-caption--band {
+      height: auto;
+      line-height: 1.4;
+      margin: 0 0 36px;
+      padding: 8px 16px;
+      white-space: normal;
+      font-size: 17px;
+    }
+  }
+}
+
+@keyframes band-in {
+  from {
+    opacity: 0;
+    clip-path: inset(0 0 0 100%);
+  }
+}
+
+@media (hover: hover) {
+  .mosaic--bands .tile:hover .tile__img,
+  .mosaic--bands .tile:focus-visible .tile__img {
+    filter: none;
+  }
+
+  .tile--plan:hover,
+  .tile--plan:focus-visible {
+    .tile__img {
+      transform: scale(1.025);
+      filter: drop-shadow(0 18px 40px rgba(255, 255, 255, 0.08));
+    }
+  }
+
+  // The sheets fan out a little further when the card is hovered.
+  .tile--card:hover + .tile-sheets,
+  .tile--card:focus-visible + .tile-sheets {
+    &::before {
+      transform: translate(-2.5%, 2%) rotate(-7deg);
+    }
+    &::after {
+      transform: translate(-1.2%, 1%) rotate(-4.5deg);
+    }
+  }
+}
+
+/* ---------- Tablet: two columns ---------- */
+@media (max-width: 899px) {
+  .gp {
+    --gp-width: min(92vw, 820px);
+  }
+
+  .mosaic {
+    aspect-ratio: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-flow: row dense;
+    gap: 12px;
+
+    & + & {
+      margin-top: 12px;
+    }
+  }
+
+  .tile {
+    position: relative;
+    inset: auto;
+    width: auto;
+    height: auto;
+    aspect-ratio: 4 / 5;
+
+    &--wide {
+      grid-column: span 2;
+      aspect-ratio: 16 / 9;
+    }
+  }
+}
+
+/* ---------- Touch: no hover, so the title is always visible at the bottom ---------- */
+@media (hover: none) {
+  .tile__shade {
+    opacity: 1;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent 45%);
+  }
+
+  .tile__title {
+    place-items: end center;
+    padding: 0 12px 12px;
+    font-size: clamp(16px, 4.2vw, 22px);
+    letter-spacing: 0.06em;
+    opacity: 1;
+    transform: none;
+  }
+
+  .tile__views {
+    opacity: 1;
+  }
+}
+
+/* ---------- Phone: one column, each image keeps roughly its sketch proportion ---------- */
+@media (max-width: 559px) {
+  .mosaic {
+    grid-template-columns: 1fr;
+  }
+
+  .tile,
+  .tile--wide {
+    grid-column: auto;
+    aspect-ratio: max(0.8, min(var(--ratio), 1.78));
+  }
+}
+
+/* ---------- Plans on tablet and phone: one column, caption under each plan ---------- */
+@media (max-width: 899px) {
+  .mosaic--plans {
+    grid-template-columns: 1fr;
+    max-width: 620px;
+    margin-inline: auto;
+    gap: 0;
+
+    .tile-sheets,
+    .tile-frame {
+      display: none;
+    }
+
+    .tile,
+    .tile--wide {
+      grid-column: auto;
+      aspect-ratio: max(0.6, min(var(--ratio), 2));
+    }
+
+    .tile-caption {
+      position: static;
+      width: auto;
+      margin: 10px 0 34px;
+      font-size: 18px;
+      text-align: right !important;
+
+      span {
+        padding-inline: 0;
+      }
+    }
+  }
+}
+
+/* ---------- Viewer (opens large, with extra views) ---------- */
+.viewer {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  // minmax(0, 1fr): the image area may shrink, so the image always fits the screen.
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  justify-items: center;
+  gap: clamp(10px, 1.6vh, 22px);
+  padding: clamp(16px, 3vh, 36px) clamp(12px, 4vw, 70px);
+  background: rgba(10, 9, 8, 0.95);
+  animation: fade-in 0.45s var(--ease-out);
+}
+
+// Sketch note: the title appears large on the opened view.
+.viewer__title {
+  margin: 0;
+  max-width: 80vw;
+  text-align: center;
+  white-space: pre-line;
+  font-family: var(--font-cond);
+  font-stretch: 75%;
+  font-weight: 300;
+  font-size: clamp(26px, 3.4vw, 64px);
+  line-height: 1.15;
+  letter-spacing: 0.1em;
+  color: var(--cream);
+  animation: title-in 0.9s var(--ease-out) 0.1s both;
+}
+
+.viewer__stage {
+  position: relative;
+  min-height: 0;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  touch-action: pan-y;
+}
+
+.viewer__img,
+.viewer__placeholder {
+  max-width: min(100%, 1700px);
+  max-height: 100%;
+  object-fit: contain;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+}
+
+.viewer__img {
+  // Fills the stage and letterboxes, so any image size fits the screen.
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  box-shadow: none;
+  filter: drop-shadow(0 24px 50px rgba(0, 0, 0, 0.45));
+}
+
+.viewer__placeholder {
+  width: min(70vw, 900px);
+  aspect-ratio: 16 / 10;
+  display: grid;
+  place-items: center;
+  background: #2a2622;
+
+  code {
+    color: #b8ab9c;
+    font-size: 13px;
+  }
+}
+
+.viewer__close,
+.viewer__nav {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--cream);
+  cursor: pointer;
+  opacity: 0.75;
+  transition:
+    opacity 0.3s,
+    transform 0.4s var(--ease-out);
+
+  svg {
+    width: 100%;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.4;
+  }
+
+  &:hover,
+  &:focus-visible {
+    opacity: 1;
+  }
+}
+
+.viewer__close {
+  position: fixed;
+  top: clamp(14px, 2.4vh, 28px);
+  inset-inline-start: clamp(14px, 2.4vw, 36px);
+  width: 40px;
+  height: 40px;
+
+  &:hover {
+    transform: rotate(90deg);
+  }
+}
+
+.viewer__nav {
+  top: 50%;
+  width: clamp(36px, 3.4vw, 56px);
+  height: clamp(36px, 3.4vw, 56px);
+  margin-top: calc(clamp(36px, 3.4vw, 56px) / -2);
+
+  // RTL: "previous" is on the right.
+  &--prev {
+    right: 0;
+  }
+  &--next {
+    left: 0;
+  }
+
+  &--prev:hover {
+    transform: translateX(4px);
+  }
+  &--next:hover {
+    transform: translateX(-4px);
+  }
+}
+
+.viewer__thumbs {
+  display: flex;
+  gap: 8px;
+  max-width: 100%;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+.viewer__thumb {
+  flex: none;
+  width: clamp(56px, 6vw, 96px);
+  aspect-ratio: 4 / 3;
+  padding: 0;
+  border: 1px solid transparent;
+  background: #2a2622;
+  cursor: pointer;
+  opacity: 0.5;
+  overflow: hidden;
+  transition:
+    opacity 0.3s,
+    border-color 0.3s;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  &:hover,
+  &--on {
+    opacity: 1;
+  }
+
+  &--on {
+    border-color: var(--beige);
+  }
+}
+
+@media (max-width: 640px) {
+  .viewer__nav {
+    top: auto;
+    bottom: 8px;
+    margin-top: 0;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 50%;
+    padding: 8px;
+  }
+}
+
+/* ---------- Keyframes ---------- */
+@keyframes title-in {
+  from {
+    opacity: 0;
+    transform: translateY(40%);
+    letter-spacing: 0.3em;
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes tile-in {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.98);
+  }
+}
+

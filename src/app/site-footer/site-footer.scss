@@ -1,0 +1,430 @@
+﻿// Geometry from sketch 11 (922px wide). 1 sketch px ≈ 0.1085vw.
+:host {
+  --s: clamp(0.7px, 0.1085vw, 2.1px);
+  --gold: #c9a46a;
+  --line: rgba(255, 253, 244, 0.75);
+  display: block;
+}
+
+.footer {
+  background: #000;
+  color: var(--cream);
+  overflow-x: clip;
+}
+
+/* ---------- Lead form ---------- */
+.lead {
+  padding: calc(52 * var(--s)) 24px calc(46 * var(--s));
+}
+
+.lead__form {
+  width: min(calc(352 * var(--s)), 100%);
+  margin-inline: auto;
+}
+
+.lead__title {
+  margin: 0 0 calc(22 * var(--s));
+  padding-inline-end: calc(36 * var(--s));
+  text-align: center;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: max(17px, calc(16 * var(--s)));
+  letter-spacing: 0.04em;
+  color: #e9e3da;
+}
+
+// Entrance (sketch note): each field fades in and rises ~16px, one after another.
+.field,
+.lead__actions {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.8s var(--ease-out),
+    transform 0.9s var(--ease-out);
+  transition-delay: calc(0.25s + var(--f) * 0.12s);
+
+  .is-visible & {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.field {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: end;
+  column-gap: calc(12 * var(--s));
+  margin-bottom: calc(18 * var(--s));
+}
+
+.field__label {
+  padding-bottom: 3px;
+  font-family: var(--font-cond, var(--font-display));
+  font-stretch: 80%;
+  font-size: max(15px, calc(14.5 * var(--s)));
+  color: #e6ebf2;
+  white-space: nowrap;
+  transform-origin: right bottom;
+  transition:
+    transform 0.45s var(--ease-out),
+    color 0.35s;
+}
+
+// Label rises and shrinks a little while typing (sketch note).
+.field:focus-within .field__label,
+.field--filled .field__label {
+  transform: translateY(-9px) scale(0.84);
+  color: var(--gold);
+}
+
+// Underline "lights up" in gold on focus (sketch note).
+.field__line {
+  position: relative;
+  display: block;
+  border-bottom: 1px solid var(--line);
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset-inline: 0;
+    bottom: -1px;
+    height: 2px;
+    background: var(--gold);
+    box-shadow: 0 0 10px rgba(201, 164, 106, 0.55);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.6s var(--ease-out);
+  }
+
+  &--short {
+    grid-column: 1 / -1;
+    width: calc(120 * var(--s));
+    margin-top: 4px;
+    margin-inline-start: auto;
+  }
+}
+
+.field:focus-within .field__line::after {
+  transform: scaleX(1);
+}
+
+.field__input {
+  width: 100%;
+  padding: 4px 2px;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--cream);
+  font: inherit;
+  font-size: max(15px, calc(14 * var(--s)));
+  caret-color: var(--gold);
+
+  &[dir='ltr'] {
+    text-align: right;
+  }
+
+  &:-webkit-autofill {
+    -webkit-text-fill-color: var(--cream);
+    transition: background-color 9999s;
+  }
+}
+
+.field__error {
+  position: absolute;
+  inset-inline-start: 0;
+  top: 100%;
+  margin-top: 3px;
+  font-size: 12px;
+  color: #e8a39b;
+}
+
+.field--error .field__line {
+  border-bottom-color: #e8a39b;
+}
+
+/* ----- Project type choices ----- */
+.field--choice {
+  grid-template-columns: auto auto 1fr;
+
+  .field__label {
+    transform: none;
+  }
+}
+
+.choices {
+  display: flex;
+  align-items: baseline;
+  gap: 0.35em;
+  padding-bottom: 3px;
+  font-size: max(15px, calc(14.5 * var(--s)));
+}
+
+.choices__sep {
+  color: #8c8580;
+}
+
+.choice {
+  position: relative;
+  padding: 0 1px;
+  border: 0;
+  background: none;
+  font-family: var(--font-cond, var(--font-display));
+  font-stretch: 80%;
+  font-size: inherit;
+  color: var(--toggle-hover);
+  cursor: pointer;
+  transition: color 0.3s;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset-inline: 0;
+    bottom: -2px;
+    height: 1px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transition: transform 0.4s var(--ease-out);
+  }
+
+  &:hover,
+  &--on {
+    color: var(--gold);
+  }
+
+  &--on::after {
+    transform: scaleX(1);
+  }
+}
+
+.field--choice .field__line--short {
+  grid-column: 3;
+  width: auto;
+  margin: 0;
+}
+
+/* ----- Submit ----- */
+.lead__actions {
+  display: flex;
+  // RTL + row-reverse: packs from the left; the status text sits to the button's right.
+  flex-direction: row-reverse;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 16px;
+  margin-top: calc(28 * var(--s));
+  // Sketch: the button sits at the left end of the lines.
+}
+
+.lead__submit {
+  padding: calc(4 * var(--s)) calc(16 * var(--s));
+  border: 0;
+  border-radius: calc(3 * var(--s)) 0 0 0;
+  background: var(--beige);
+  color: #2a2420;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: max(13px, calc(9.5 * var(--s)));
+  cursor: pointer;
+  transition:
+    background-color 0.35s,
+    color 0.35s,
+    transform 0.15s,
+    box-shadow 0.35s;
+
+  // Sketch note: darker gold on hover with lighter text; small press on click.
+  &:hover,
+  &:focus-visible {
+    background: #a8834f;
+    color: var(--cream);
+    box-shadow: 0 8px 22px rgba(201, 164, 106, 0.25);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+.lead__status {
+  margin: 0;
+  font-size: 14px;
+  color: var(--gold);
+}
+
+/* ---------- Contact line ---------- */
+.reach {
+  // Sketch: arrow at the right edge, then the contact line with the logo right after it.
+  display: flex;
+  align-items: center;
+  gap: calc(14 * var(--s));
+  padding: 0 calc(35 * var(--s)) calc(48 * var(--s)) 24px;
+
+  .reach__line {
+    margin-inline-start: calc(110 * var(--s));
+  }
+}
+
+.reach__top {
+  width: calc(37 * var(--s));
+  min-width: 32px;
+  aspect-ratio: 37 / 28;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: 0 calc(14 * var(--s)) 0 0;
+  background: var(--beige);
+  color: #fff;
+  cursor: pointer;
+  transition:
+    background-color 0.35s,
+    transform 0.35s var(--ease-out);
+
+  svg {
+    height: 62%;
+  }
+
+  &:hover {
+    background: #a8834f;
+    transform: translateY(-3px);
+  }
+}
+
+.reach__line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 0.6em;
+  margin: 0;
+  font-family: var(--font-cond, var(--font-display));
+  font-stretch: 80%;
+  font-size: max(14px, calc(13.5 * var(--s)));
+  color: #e6ebf2;
+
+  a {
+    color: inherit;
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    background: linear-gradient(var(--gold), var(--gold)) right bottom / 0 1px no-repeat;
+    transition:
+      background-size 0.45s var(--ease-out),
+      color 0.3s;
+
+    &:hover,
+    &:focus-visible {
+      color: var(--gold);
+      background-size: 100% 1px;
+    }
+  }
+}
+
+.reach__email {
+  text-transform: uppercase;
+}
+
+.reach__sep {
+  color: #e6ebf2;
+}
+
+.reach__logo {
+  height: calc(34 * var(--s));
+  min-height: 28px;
+}
+
+.reach__mark {
+  font-family: var(--font-display);
+  font-weight: 200;
+  font-size: max(30px, calc(34 * var(--s)));
+  line-height: 1;
+  color: var(--beige);
+}
+
+/* ---------- Tagline band ---------- */
+.band {
+  margin: 0;
+  padding: calc(3 * var(--s)) 16px;
+  background: var(--beige);
+  text-align: center;
+  overflow: hidden;
+}
+
+.band__text {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: max(14px, calc(15 * var(--s)));
+  letter-spacing: 0.22em;
+  color: #6f655c;
+  white-space: nowrap;
+}
+
+/* ---------- Bottom navigation ---------- */
+.bottom-nav {
+  padding: calc(20 * var(--s)) 24px calc(14 * var(--s));
+
+  ul {
+    list-style: none;
+    margin: 0 auto;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 6px;
+    // Sketch: nav sits slightly right of centre.
+    padding-inline-end: calc(150 * var(--s));
+  }
+
+  li + li::before {
+    content: '|';
+    margin: 0 0.5em;
+    color: #8a8178;
+  }
+
+  a {
+    font-family: var(--font-cond, var(--font-display));
+    font-stretch: 80%;
+    font-size: max(13px, calc(12 * var(--s)));
+    color: #a59a8f;
+    text-decoration: none;
+    transition: color 0.3s;
+
+    &:hover,
+    &:focus-visible,
+    &[aria-current='page'] {
+      color: var(--cream);
+    }
+  }
+}
+
+@media (max-width: 760px) {
+  .lead__title {
+    padding-inline-end: 0;
+  }
+
+  .reach {
+    flex-direction: column;
+
+    .reach__line {
+      margin-inline-start: 0;
+    }
+
+    text-align: center;
+    padding: 0 24px 36px;
+  }
+
+  .reach__line {
+    justify-content: center;
+  }
+
+  .reach__top {
+    display: none;
+  }
+
+  .band__text {
+    white-space: normal;
+    letter-spacing: 0.1em;
+  }
+
+  .bottom-nav ul {
+    padding-inline-end: 0;
+  }
+}

@@ -1,0 +1,397 @@
+// Everything is sized in vw from sketch 38 (966 px wide), so the page keeps its proportions.
+:host {
+  // Mouse position, -1..1 (set in about.ts) – drives the depth effect.
+  --mx: 0;
+  --my: 0;
+
+  --bg: #ded6ce;
+  --col: #c6bdb4;
+  --text: #3b3532;
+  --title: #897e74;
+  --nav: #9a8c82;
+
+  display: block;
+}
+
+/* ---------- Layout (RTL grid: beige margin | taupe column | content) ---------- */
+.about {
+  position: relative;
+  min-height: 100svh;
+  display: grid;
+  grid-template-columns: 4.35vw 30.33vw minmax(0, 1fr);
+  background: var(--bg);
+  overflow: clip;
+}
+
+/* ---------- Taupe column + image ---------- */
+.about__column {
+  grid-column: 2;
+  background: var(--col);
+  padding-top: 17.8vw;
+  animation: column-in 1.2s var(--ease-in-out) both;
+}
+
+.about__figure {
+  position: relative;
+  margin: 0;
+  aspect-ratio: 293 / 273;
+}
+
+// The image and the lines on top of it move together, so the lines stay on the photo's lines.
+.about__depth {
+  position: absolute;
+  inset: 0;
+  transition: transform 1.2s var(--ease-out);
+  will-change: transform;
+  transform: translate3d(calc(var(--mx) * -5px), calc(var(--my) * -5px), 0);
+}
+
+.about__image {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  animation: image-in 1.4s var(--ease-in-out) 0.55s both;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    // Sketch: the photo is cropped 28 of its 1024 px from the top.
+    object-position: 50% 40%;
+    display: block;
+    animation: image-zoom 1.5s var(--ease-out) 0.55s both;
+  }
+}
+
+.about__placeholder {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 78% 30%, rgba(255, 250, 238, 0.9), transparent 45%),
+    linear-gradient(120deg, #efe8dd 0%, #d9cdbd 45%, #b4a48f 100%);
+}
+
+.about__lines {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+
+  line,
+  circle {
+    fill: none;
+    stroke: rgba(50, 43, 38, 0.6);
+    // 1 unit = 0.29 px, so 3.5 units is about 1 px.
+    stroke-width: 3.5;
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    animation: draw 1.6s var(--ease-out) both;
+    animation-delay: calc(2s + var(--d) * 0.12s);
+  }
+}
+
+// "רותם  הדמיות אדריכליות ועיצוב גרפי  ROTEM" in the image's bottom corner.
+.about__caption {
+  position: absolute;
+  z-index: 2;
+  bottom: 4%;
+  // Physical sides: the figure is not mirrored, the sketch measures from its right edge.
+  right: 10.9%;
+  display: flex;
+  align-items: baseline;
+  gap: 0.2em;
+  margin: 0;
+  font-size: clamp(11px, 1.56vw, 30px);
+  font-weight: 300;
+  line-height: 1;
+  white-space: nowrap;
+  animation: caption-in 1.2s var(--ease-out) 2.1s both;
+}
+
+.about__caption-brand {
+  color: #b9b1a8;
+}
+
+.about__caption-tag {
+  color: #fff;
+}
+
+.about__caption-en {
+  font-size: 0.56em;
+  color: #c8aea1;
+  letter-spacing: 0.03em;
+}
+
+.about__mark {
+  position: absolute;
+  z-index: 2;
+  left: 4.1%;
+  bottom: 0.7%;
+  height: 16.5%;
+  width: auto;
+  aspect-ratio: 200 / 280;
+  animation: caption-in 1.2s var(--ease-out) 2.1s both;
+}
+
+/* ---------- Content ---------- */
+.about__content {
+  grid-column: 3;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  // Sketch: the title starts 137 px down and the text ends 17 px from the column.
+  padding-block: 13.4vw 2vw;
+  padding-inline: 0 0;
+  padding-inline-start: 1.76vw;
+}
+
+.about__text {
+  // As wide as its longest line, so the lines never wrap (sketch: 45.7vw).
+  width: max-content;
+  max-width: 100%;
+}
+
+.about__title {
+  margin: 0 0 1.25vw;
+  overflow: hidden;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(22px, 2.5vw, 60px);
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  color: var(--title);
+}
+
+.about__title-letter {
+  display: inline-block;
+  animation: letter-up 1s var(--ease-out) both;
+  animation-delay: calc(0.6s + var(--l) * 0.07s);
+}
+
+.about__para {
+  margin: 0 0 0.88em;
+  font-family: var(--font-display);
+  // Heebo 400 at 1.41vw gives the sketch's 45.7vw first line; its pitch is 16 px on 966.
+  font-size: clamp(13px, 1.41vw, 28px);
+  line-height: 1.17;
+  font-weight: 400;
+  color: var(--text);
+}
+
+// Each sketch line is revealed from under a mask, one after another.
+.about__line {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.about__line-in {
+  display: inline-block;
+  animation: line-up 1s var(--ease-out) both;
+  animation-delay: calc(0.85s + var(--i) * 0.065s);
+}
+
+// Sketch: 95 px wide, 279 px from the text's right edge, tucked up beside the last two lines.
+.about__signature {
+  display: block;
+  width: 9.83vw;
+  height: auto;
+  margin-block: -3.9vw 0;
+  margin-inline-start: 28.9vw;
+  animation: fade-up 1.2s var(--ease-out) 1.9s both;
+}
+
+/* ---------- Bottom navigation ---------- */
+.about__nav {
+  margin-top: auto;
+  padding-top: 32px;
+  // Sketch: centred on the whole left area, not on the area beside the text.
+  margin-inline-start: -1.76vw;
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 6px;
+  }
+
+  li {
+    display: flex;
+    align-items: center;
+    animation: fade-up 0.8s var(--ease-out) both;
+    animation-delay: calc(2.2s + var(--n) * 0.05s);
+  }
+
+  li + li::before {
+    content: '|';
+    margin: 0 0.42em;
+    color: var(--nav);
+  }
+
+  a {
+    position: relative;
+    font-family: var(--font-display);
+    font-size: clamp(11px, 1.05vw, 22px);
+    font-weight: 400;
+    color: var(--nav);
+    text-decoration: none;
+    transition: color 0.3s;
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset-inline: 0;
+      bottom: -2px;
+      height: 1px;
+      background: currentColor;
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.5s var(--ease-out);
+    }
+
+    &:hover,
+    &:focus-visible,
+    &[aria-current='page'] {
+      color: var(--text);
+    }
+
+    &:hover::after,
+    &:focus-visible::after {
+      transform: scaleX(1);
+    }
+  }
+}
+
+/* ---------- Keyframes ---------- */
+@keyframes column-in {
+  from {
+    clip-path: inset(0 0 100% 0);
+  }
+  to {
+    clip-path: inset(0);
+  }
+}
+
+@keyframes image-in {
+  from {
+    clip-path: inset(50% 0 50% 0);
+  }
+  to {
+    clip-path: inset(0);
+  }
+}
+
+// Ends at 1, so the photo's own lines meet the drawn ones exactly.
+@keyframes image-zoom {
+  from {
+    transform: scale(1.15);
+  }
+  to {
+    transform: none;
+  }
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes caption-in {
+  from {
+    opacity: 0;
+    letter-spacing: 0.25em;
+  }
+}
+
+@keyframes letter-up {
+  from {
+    opacity: 0;
+    transform: translateY(110%);
+  }
+}
+
+@keyframes line-up {
+  from {
+    opacity: 0;
+    transform: translateY(105%);
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+/* ---------- Tablet / mobile: image on top, text below ---------- */
+@media (max-width: 900px) {
+  .about {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .about__column {
+    grid-column: 1;
+    padding: calc(var(--header-h) + 20px) 7vw 7vw;
+  }
+
+  .about__content {
+    grid-column: 1;
+    padding: 40px 7vw 28px;
+  }
+
+  .about__text {
+    width: auto;
+  }
+
+  .about__title {
+    font-size: 30px;
+    margin-bottom: 18px;
+  }
+
+  .about__para {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  // Lines flow as normal text on narrow screens.
+  .about__line {
+    display: inline;
+    overflow: visible;
+    white-space: normal;
+  }
+
+  .about__line-in {
+    display: inline;
+    animation-name: fade-in;
+  }
+
+  .about__signature {
+    width: 120px;
+    margin: 4px 0 0;
+  }
+
+  .about__caption {
+    font-size: 13px;
+  }
+
+  .about__nav {
+    margin-inline-start: 0;
+
+    a {
+      font-size: 14px;
+    }
+  }
+}

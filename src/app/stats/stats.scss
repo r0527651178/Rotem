@@ -1,0 +1,103 @@
+// Geometry from sketch 11 (922px wide): lines span x 102–830, dividers at 372 and 623.
+:host {
+  display: block;
+  background: var(--cream);
+  border-top: 2px solid #1a1a1a;
+}
+
+.stats {
+  padding: clamp(12px, 1.3vw, 26px) 0 clamp(36px, 5vw, 80px);
+}
+
+.stats__list {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  width: min(79vw, 1580px);
+  display: grid;
+  // RTL: right column first. Widths 207 / 251 / 270 of the 728px line.
+  grid-template-columns: 207fr 251fr 270fr;
+}
+
+.stat {
+  position: relative;
+  display: grid;
+  grid-template-rows: auto auto;
+  justify-items: center;
+
+  // Vertical divider, taller than the row as in the sketch.
+  & + &::before {
+    content: '';
+    position: absolute;
+    inset-inline-start: 0;
+    top: calc(-1 * clamp(12px, 1.3vw, 26px));
+    bottom: calc(-1 * clamp(6px, 0.8vw, 14px));
+    width: 1px;
+    background: #1a1a1a;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 1.1s var(--ease-out) calc(0.2s + var(--i) * 0.12s);
+  }
+}
+
+.stats--on .stat + .stat::before {
+  transform: scaleY(1);
+}
+
+.stat__value {
+  position: relative;
+  display: grid;
+  font-family: 'Fredoka', var(--font-display);
+  font-weight: 600;
+  font-size: clamp(40px, 6.6vw, 132px);
+  line-height: 1.05;
+  color: var(--beige-text);
+  direction: ltr;
+  // Same width for every digit, so the number doesn't wobble while counting.
+  font-variant-numeric: tabular-nums;
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.9s var(--ease-out) calc(var(--i) * 0.12s),
+    transform 0.9s var(--ease-out) calc(var(--i) * 0.12s);
+
+  .stats--on & {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.stat__ghost,
+.stat__count {
+  grid-area: 1 / 1;
+  text-align: center;
+}
+
+.stat__ghost {
+  visibility: hidden;
+}
+
+// The full-width line under the numbers is drawn by the labels row.
+.stat__label {
+  width: 100%;
+  padding-top: clamp(4px, 0.6vw, 12px);
+  border-top: 1px solid #1a1a1a;
+  text-align: center;
+  font-family: var(--font-cond, var(--font-display));
+  font-stretch: 75%;
+  font-size: clamp(14px, 1.55vw, 30px);
+  color: #1a1a1a;
+  clip-path: inset(0 0 0 100%);
+  transition: clip-path 1.2s var(--ease-in-out) calc(var(--i) * 0.15s);
+
+  .stats--on & {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@media (max-width: 640px) {
+  .stats__list {
+    width: 90vw;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
