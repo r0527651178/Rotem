@@ -27,7 +27,7 @@
 .about__column {
   grid-column: 2;
   background: var(--col);
-  padding-top: 17.8vw;
+  padding-top: min(17.8vw, 21svh);
   animation: column-in 1.2s var(--ease-in-out) both;
 }
 
@@ -142,7 +142,7 @@
   flex-direction: column;
   min-width: 0;
   // Sketch: the title starts 137 px down and the text ends 17 px from the column.
-  padding-block: 13.4vw 2vw;
+  padding-block: min(13.4vw, 16svh) 2vw;
   padding-inline: 0 0;
   padding-inline-start: 1.76vw;
 }
