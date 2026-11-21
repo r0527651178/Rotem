@@ -160,7 +160,7 @@
               { "title": "פרידמן", "folder": "friedman" },
               { "title": "מיוחס", "folder": "meyuchas" },
               { "title": "אוהל שלצה", "folder": "ohel-shlatza" },
-              { "title": "חגיז", "folder": "hagiz" },
+              { "title": "חגיז", "folder": "hagiz", "views": 2 },
               { "title": "ניסן בק", "folder": "nissan-bek" },
               { "title": "לבוש מרדכי", "folder": "levush-mordechai" },
               { "title": "אגריפס", "folder": "agripas" },
