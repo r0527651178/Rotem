@@ -112,12 +112,11 @@
   column-gap: 0.55em;
   font-family: var(--font-display);
   font-weight: 300;
-  // 50% of the former clamp(17px, 2.1vw, 34px); the floor keeps it readable on phones.
-  font-size: clamp(11px, 1.05vw, 17px);
+  // Size and colour from the reference image (898 px wide): about 13 px text, light translucent pill.
+  font-size: clamp(11px, 1.45vw, 28px);
   letter-spacing: 0.14em;
   color: #1a1a1a;
-  // Beige at 50% opacity.
-  background: rgba(194, 179, 163, 0.5);
+  background: rgba(255, 253, 244, 0.55);
   border-radius: 0 999px 999px 0;
   transform-origin: right center;
   // The sentence fades out toward its end (the left side, as the text reads right to left).
@@ -248,19 +247,6 @@
 @keyframes fade-in {
   from {
     opacity: 0;
-  }
-}
-
-// Large screens: the floating menu row sits at the bottom, so lift the hero's bottom items above it.
-@media (min-width: 1280px) {
-  .tagline {
-    bottom: max(11%, 100px);
-  }
-  .dots {
-    bottom: 80px;
-  }
-  .scroll-cue {
-    bottom: 74px;
   }
 }
 

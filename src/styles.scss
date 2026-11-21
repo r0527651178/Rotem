@@ -51,15 +51,6 @@ button {
   font: inherit;
 }
 
-// The floating menu row (large screens) must not cover the end of the footer.
-@media (min-width: 1280px) {
-  app-site-footer {
-    display: block;
-    padding-bottom: 64px;
-    background: #000;
-  }
-}
-
 :focus-visible {
   outline: 2px solid var(--beige);
   outline-offset: 3px;
