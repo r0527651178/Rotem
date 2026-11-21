@@ -7,6 +7,7 @@
     [transparent]="transparentHeader()"
   />
   <router-outlet />
+  <app-floating-nav [nav]="c.menu" />
   <app-back-to-top />
 } @else {
   <div class="loader" aria-label="טוען">

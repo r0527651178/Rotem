@@ -6,10 +6,11 @@ import { filter, map } from 'rxjs';
 import { ContentService } from './content';
 import { Header } from './header/header';
 import { BackToTop } from './back-to-top/back-to-top';
+import { FloatingNav } from './floating-nav/floating-nav';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Header, BackToTop],
+  imports: [RouterOutlet, Header, BackToTop, FloatingNav],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })

@@ -66,6 +66,30 @@
   color: var(--cream);
   text-decoration: none;
   direction: ltr;
+  // Light motion: a slow drift, and the logo shrinks a little once the page is scrolled.
+  transform-origin: left center;
+  animation: brand-float 7s ease-in-out 1.5s infinite;
+  transition:
+    scale 0.5s var(--ease-out),
+    opacity 0.4s var(--ease-out);
+
+  .header--scrolled & {
+    scale: 0.86;
+  }
+
+  &:hover {
+    scale: 1.04;
+  }
+
+  .header--scrolled &:hover {
+    scale: 0.9;
+  }
+}
+
+@keyframes brand-float {
+  50% {
+    translate: 0 -2px;
+  }
 }
 
 .brand__logo {
@@ -105,8 +129,9 @@
   }
 }
 
+// Same size as the Hebrew name next to it.
 .brand__en {
-  font-size: 0.64em;
+  font-size: 1em;
   letter-spacing: 0.04em;
   color: var(--beige);
 }
@@ -121,14 +146,24 @@
   z-index: 2;
   // Image (1024 px wide): lines 82 / 67 / 48 px long, 11 px apart, 2 px thick. All of it grows with the
   // screen width like the rest of the bar, so on a 1600 px screen it is still the same fraction of the bar.
-  --b: max(8px, 1.07vw);
+  // Feedback round 1: the lines are 75% shorter. The button keeps its old width as the click area,
+  // and the lines are a fraction of it. Line thickness stays legible (2 px minimum).
+  --bw: clamp(56px, 8vw, 220px);
+  --b: max(5px, 0.5vw);
   --t: max(2px, 0.2vw);
-  width: clamp(56px, 8vw, 220px);
+  width: var(--bw);
   height: calc(var(--b) * 2 + var(--t));
   padding: 0;
   background: none;
   border: 0;
   cursor: pointer;
+
+  // The lines are small now, so enlarge the clickable area around them.
+  &::before {
+    content: '';
+    position: absolute;
+    inset: -16px -6px;
+  }
 }
 
 .burger__line {
@@ -144,26 +179,25 @@
     top 0.6s var(--ease-out),
     background-color 0.4s;
 
+  // 25% of the former lengths (100% / 82% / 58% of the button).
   &--1 {
     top: 0;
-    width: 100%;
+    width: 25%;
     background: var(--cream);
   }
   &--2 {
     top: var(--b);
-    width: 82%;
+    width: 20.5%;
     background: var(--cream);
   }
   &--3 {
     top: calc(var(--b) * 2);
-    width: 58%;
+    width: 14.5%;
     background: var(--beige);
   }
 }
 
 .brand {
-  transition: opacity 0.4s var(--ease-out);
-
   .header--open & {
     opacity: 0;
     pointer-events: none;
@@ -171,12 +205,13 @@
 }
 
 .burger:hover .burger__line {
-  width: 100%;
+  width: 25%;
 }
 
 .header--open {
   .burger__line {
-    width: 70%;
+    // The X is 50% of its former size (the lines were 70% of the button).
+    width: 35%;
     top: var(--b);
     background: var(--beige);
   }
