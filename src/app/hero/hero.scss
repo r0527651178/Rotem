@@ -112,16 +112,13 @@
   column-gap: 0.55em;
   font-family: var(--font-display);
   font-weight: 300;
-  // Size and colour from the reference image (898 px wide): about 13 px text, light translucent pill.
-  font-size: clamp(11px, 1.45vw, 28px);
+  // As in the reference image (898 px wide): light text about 17 px, on beige at 50% opacity.
+  font-size: clamp(13px, 1.7vw, 32px);
   letter-spacing: 0.14em;
-  color: #1a1a1a;
-  background: rgba(255, 253, 244, 0.55);
+  color: var(--cream);
+  background: rgba(194, 179, 163, 0.5);
   border-radius: 0 999px 999px 0;
   transform-origin: right center;
-  // The sentence fades out toward its end (the left side, as the text reads right to left).
-  -webkit-mask-image: linear-gradient(to left, rgba(0, 0, 0, 0.1), #000 55%);
-  mask-image: linear-gradient(to left, rgba(0, 0, 0, 0.1), #000 55%);
   animation: pill-in 1.1s var(--ease-out) 0.9s both;
 }
 
