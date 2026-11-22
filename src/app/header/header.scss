@@ -148,9 +148,9 @@
   // screen width like the rest of the bar, so on a 1600 px screen it is still the same fraction of the bar.
   // Proportions taken from the reference image (898 px wide): lines 72 / 56 / 41 px long
   // (100% / 78% / 57% of the button), 10 px apart, 2 px thick, right-aligned.
-  --bw: clamp(56px, 8vw, 220px);
-  --b: max(8px, 1.1vw);
-  --t: max(2px, 0.2vw);
+  --bw: clamp(56px, 8vw, 115px);
+  --b: max(8px, min(1.1vw, 16px));
+  --t: max(2px, min(0.2vw, 3px));
   width: var(--bw);
   height: calc(var(--b) * 2 + var(--t));
   padding: 0;
@@ -223,30 +223,6 @@
   }
   .burger__line--3 {
     transform: rotate(-45deg);
-  }
-}
-
-// Large screens only (not laptops): the three lines are 75% smaller, in length and spacing.
-// Thickness is 2 px so the small lines don't merge. The X when open keeps its size (35% of the button).
-@media (min-width: 1700px) {
-  .burger {
-    --b: max(3px, 0.3vw);
-    --t: 2px;
-  }
-
-  .header:not(.header--open) {
-    .burger__line--1 {
-      width: 25%;
-    }
-    .burger__line--2 {
-      width: 19.5%;
-    }
-    .burger__line--3 {
-      width: 14.25%;
-    }
-    .burger:hover .burger__line {
-      width: 25%;
-    }
   }
 }
 
