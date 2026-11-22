@@ -26,10 +26,10 @@
 | 5 | קראל נטר 22 ראשון לציון | `exterior/kral-neter/` | 1000 × 1050 | כמעט ריבוע |
 | 6 | משמר הגבול 2 תמ"א 38 | `exterior/eshkol-tama38/` | 1000 × 1050 | כמעט ריבוע |
 | 7 | ירמיהו 52 | `exterior/yirmiyahu-52/` | 1000 × 1400 | לאורך |
-| 8 | כנפי נשרים פינת נאג'רה | `exterior/kanfei-nesharim/` | 1000 × 1400 | לאורך |
+| 8 | כנפי נשרים פינת נג'ארה | `exterior/kanfei-nesharim/` | 1000 × 1400 | לאורך |
 | 9 | לינקולן 8 | `exterior/lincoln/` | 1000 × 1100 | כמעט ריבוע |
 | 10 | דו משפחתי במרחב בישוב רחלים | `exterior/two-family/` | 2050 × 800 | רחבה |
-| 11 | מיכלין 3 | `exterior/michlin-2/` | 1000 × 1100 | כמעט ריבוע |
+| 11 | מיכלין | `exterior/michlin-2/` | 1000 × 1100 | כמעט ריבוע |
 | 12 | עין גדי 4 | `exterior/ein-gedi/` | 1000 × 1350 | לאורך |
 | 13 | ירמיהו 46 | `exterior/yirmiyahu/` | 1000 × 950 | כמעט ריבוע |
 | 14 | מרכז חסידי סטריקוב רחוב דוד | `exterior/strikov-center/` | 1000 × 1650 | גבוהה |
@@ -69,7 +69,7 @@
 | 13 | סלון במרחב | `interior/bamerchav-salon/` | 1100 × 750 | לרוחב |
 | 14 | חדר פנימיה יקירי ירושלים | `interior/yakirei-yerushalayim-dorm/` | 1000 × 650 | לרוחב |
 | 15 | אודיטוריום | `interior/auditorium/` | 900 × 750 | לרוחב |
-| 16 | פינת אוכל | `interior/dining-corner/` | 1100 × 750 | לרוחב |
+| 16 | פינת אוכל בקריית משה | `interior/dining-corner/` | 1100 × 750 | לרוחב |
 
 ## הסדר והפריסה
 

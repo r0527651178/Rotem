@@ -28,6 +28,11 @@ export interface GalleryPageContent {
   titleLatin?: string;
   /** "dark": black page (sales plans, sketches 27, 28). "beige": beige page (AI, sketches 32–34). Default: cream. */
   theme?: 'dark' | 'beige';
+  /**
+   * Each mosaic block is a whole layout page, edge to edge with no gap between pages, and the
+   * page title is drawn by the first template's band (AI pages, AI 1 – AI 5).
+   */
+  flush?: boolean;
   categories: GalleryCategory[];
 }
 

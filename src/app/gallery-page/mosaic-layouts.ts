@@ -40,11 +40,36 @@ export interface MosaicSlot extends MosaicBox {
   pos?: string;
 }
 
+/** A full-width coloured strip drawn under the tiles, with an optional title (AI pages). */
+export interface MosaicBand {
+  y: number;
+  h: number;
+  text?: string;
+  /** Box of the text inside the band (default: the full width). */
+  x?: number;
+  w?: number;
+  /** Font size in template px. */
+  size?: number;
+  /** Horizontal / vertical glyph scale from the layout file (InDesign's horizontal and vertical scale). */
+  scaleX?: number;
+  scaleY?: number;
+}
+
+/** A block of running text placed like a tile. With no `text`, the capability's text is used. */
+export interface MosaicText extends MosaicBox {
+  text?: string;
+  /** Font size and line height in template px. */
+  size: number;
+  leading: number;
+}
+
 export interface MosaicTemplate {
   /** Sketch the template was taken from. */
   sketch: number;
   height: number;
   slots: MosaicSlot[];
+  bands?: MosaicBand[];
+  texts?: MosaicText[];
 }
 
 export const MOSAIC_TEMPLATES: MosaicTemplate[] = [
@@ -347,53 +372,89 @@ export const SALES_PLANS_3D_TEMPLATES: MosaicTemplate[] = [
   },
 ];
 /**
- * AI templates measured from sketches 32 (the page with the title), 33 and 34,
- * normalised to width 1918. Beige page, no captions.
+ * AI pages AI 1 – AI 5 (ROTEM-pdf screenshots), measured from the InDesign file AI.idml:
+ * an A4-landscape page (841.8 pt) scaled to 1918, so x / y are page positions including its margins.
+ * Each image file is pre-cropped to what its frame shows, so it fills its slot exactly.
+ * Beige page, brown bands, no captions. z keeps the document stacking order.
  */
 export const AI_TEMPLATES: MosaicTemplate[] = [
   {
-    sketch: 32, // three rows of three; the middle tile of the top row is narrow
-    height: 1080,
+    sketch: 1, // AI 1: title band, the intro text between the columns
+    height: 1356,
+    bands: [{ y: 0, h: 130, text: 'הדמיות AI', x: 174, w: 1565, size: 91, scaleY: 0.8 }],
+    texts: [{ x: 999, y: 176, w: 327, h: 531, size: 23.9, leading: 31.9 }],
     slots: [
-      { x: 1365, y: 0, w: 548, h: 344 },
-      { x: 637, y: 0, w: 342, h: 340 },
-      { x: 9, y: 0, w: 606, h: 340 },
-      { x: 1365, y: 368, w: 548, h: 346 },
-      { x: 637, y: 368, w: 592, h: 344 },
-      { x: 9, y: 368, w: 606, h: 342 },
-      { x: 1365, y: 734, w: 548, h: 346 },
-      { x: 637, y: 734, w: 592, h: 340 },
-      { x: 11, y: 734, w: 602, h: 340 },
+      { x: 1348, y: 176, w: 525, h: 330, z: 1 }, // yakirei-synagogue-4
+      { x: 1348, y: 530, w: 525, h: 330, z: 3 }, // yakirei-synagogue-3
+      { x: 1348, y: 881, w: 525, h: 330, z: 4 }, // yakirei-synagogue
+      { x: 650, y: 530, w: 566, h: 329, z: 8 }, // image-24
+      { x: 650, y: 881, w: 566, h: 325, z: 6 }, // kids-room
+      { x: 650, y: 176, w: 326, h: 326, z: 7 }, // image-22
+      { x: 47, y: 176, w: 581, h: 327, z: 9 }, // image-7
+      { x: 47, y: 530, w: 581, h: 327, z: 10 }, // inspiration
+      { x: 49, y: 881, w: 578, h: 325, z: 11 }, // image-8
     ],
   },
   {
-    sketch: 33, // two squares on the right, four strips in the middle, three on the left
-    height: 1352,
+    sketch: 2, // AI 2: three columns, an empty band at the foot
+    height: 1356,
+    bands: [{ y: 1233, h: 123 }],
     slots: [
-      { x: 1333, y: 0, w: 584, h: 584 },
-      { x: 703, y: 0, w: 606, h: 316 },
-      { x: 7, y: 0, w: 674, h: 382 },
-      { x: 703, y: 332, w: 606, h: 342 },
-      { x: 7, y: 404, w: 674, h: 384 },
-      { x: 1335, y: 608, w: 582, h: 582 },
-      { x: 701, y: 690, w: 608, h: 334 },
-      { x: 7, y: 810, w: 674, h: 386 },
-      { x: 703, y: 1040, w: 606, h: 312 },
+      { x: 1317, y: 59, w: 560, h: 560, z: 1 }, // image-11
+      { x: 1319, y: 643, w: 558, h: 558, z: 4 }, // image-14
+      { x: 714, y: 59, w: 581, h: 304, z: 12 }, // apartment
+      { x: 714, y: 378, w: 581, h: 327, z: 9 }, // image-23
+      { x: 712, y: 721, w: 583, h: 320, z: 10 }, // image-25
+      { x: 714, y: 1057, w: 581, h: 299, z: 13 }, // image-10
+      { x: 45, y: 59, w: 646, h: 366, z: 5 }, // image-15
+      { x: 45, y: 448, w: 646, h: 366, z: 6 }, // image-16
+      { x: 45, y: 837, w: 646, h: 369, z: 7 }, // image-19
     ],
   },
   {
-    sketch: 34, // free collage around a tall floor plan
-    height: 1404,
+    sketch: 3, // AI 3: four facades, titled band at the foot
+    height: 1356,
+    bands: [{ y: 1233, h: 123, text: 'בניינים לפי שרטוט חזית', x: 174, w: 1565, size: 91, scaleY: 0.8 }],
     slots: [
-      { x: 1239, y: 2, w: 679, h: 382 },
-      { x: 801, y: 0, w: 402, h: 720 },
-      { x: 0, y: 0, w: 586, h: 584 },
-      { x: 1247, y: 412, w: 671, h: 380 },
-      { x: 0, y: 606, w: 490, h: 252 },
-      { x: 733, y: 742, w: 472, h: 266 },
-      { x: 0, y: 874, w: 488, h: 528 },
-      { x: 531, y: 1020, w: 674, h: 384 },
-      { x: 1247, y: 1026, w: 671, h: 378 },
+      { x: 1044, y: 45, w: 862, h: 582, z: 2 }, // facade-sketch
+      { x: 1031, y: 651, w: 887, h: 582, z: 1 }, // rashi
+      { x: 0, y: 45, w: 1020, h: 582, z: 3 }, // ayelet-hashachar-day
+      { x: 0, y: 651, w: 1020, h: 582, z: 4 }, // ayelet-hashachar-night
+    ],
+  },
+  {
+    sketch: 4, // AI 4: free collage around a tall image, an empty band at the foot
+    height: 1356,
+    bands: [{ y: 1233, h: 123 }],
+    slots: [
+      { x: 1228, y: 2, w: 651, h: 366, z: 2 }, // image-27
+      { x: 1234, y: 396, w: 646, h: 363, z: 3 }, // image-26
+      { x: 1234, y: 983, w: 646, h: 362, z: 6 }, // image-3
+      { x: 807, y: 1, w: 384, h: 689, z: 9 }, // image-5
+      { x: 743, y: 711, w: 452, h: 254, z: 7 }, // image-21
+      { x: 549, y: 979, w: 646, h: 366, z: 4 }, // image-18
+      { x: 39, y: 0, w: 560, h: 560, z: 1 }, // image-9
+      { x: 39, y: 581, w: 469, h: 242, z: 8 }, // image-17
+      { x: 39, y: 838, w: 468, h: 507, z: 5 }, // image-20
+    ],
+  },
+  {
+    // The layout file sets this title 110% wide in its own font; the site font is wider, so it is
+    // narrowed to keep the same length (it ends before the garden plan, as in the file).
+    sketch: 5, // AI 5: two columns of three, plans on the left, titled band at the foot
+    height: 1356,
+    bands: [{ y: 1233, h: 123, text: 'שיפוצים לפי דרישת לקוח - תוכניות מכר', x: 385, w: 1590, size: 68, scaleX: 0.88, scaleY: 0.8 }],
+    slots: [
+      { x: 1242, y: 19, w: 671, h: 379, z: 2 }, // lake-house
+      { x: 1242, y: 424, w: 671, h: 379, z: 4 }, // round-window-bedroom
+      { x: 1242, y: 828, w: 671, h: 379, z: 6 }, // spring-bathroom
+      { x: 562, y: 19, w: 671, h: 379, z: 3 }, // kitchen-options
+      { x: 562, y: 424, w: 671, h: 373, z: 5 }, // kitchen-board
+      { x: 562, y: 828, w: 671, h: 379, z: 7 }, // building
+      { x: 2, y: 19, w: 549, h: 304, z: 10 }, // sales-plan
+      { x: 0, y: 331, w: 551, h: 369, z: 9 }, // office-plan
+      { x: 2, y: 706, w: 549, h: 304, z: 11 }, // sales-plan-2
+      { x: 2, y: 1020, w: 549, h: 322, z: 8 }, // garden-plan
     ],
   },
 ];

@@ -770,6 +770,169 @@
   }
 }
 
+/* ---------- Flush pages (AI 1 – AI 5): each block is a whole layout page, edge to edge ---------- */
+.gp--flush {
+  --gp-width: 100%;
+  --band: #8c7460;
+  padding-bottom: 0;
+  // The page starts right under the black bar; the first page draws its own title band.
+  padding-top: var(--header-h);
+
+  // The h1 stays for screen readers; the first page's band shows the title.
+  .gp__head {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    margin: 0;
+  }
+}
+
+.mosaic--flush {
+  container-type: inline-size;
+
+  & + & {
+    margin-top: 0;
+  }
+
+  // Images sit on the beige page without their own background.
+  .tile {
+    background: none;
+  }
+}
+
+.page-band {
+  position: absolute;
+  inset-inline: 0;
+  top: var(--t);
+  height: var(--h);
+  z-index: 0;
+  background: var(--band, #8c7460);
+  animation: fade-in 1s var(--ease-out) both;
+}
+
+.page-band__text {
+  position: absolute;
+  left: var(--l);
+  width: var(--w);
+  top: 50%;
+  text-align: center;
+  white-space: nowrap;
+  font-family: 'Extrim', var(--font-cond);
+  font-stretch: 100%;
+  font-weight: 400;
+  font-size: calc(var(--fs) * 100cqw);
+  line-height: 1;
+  letter-spacing: 0.05em;
+  color: #fff;
+  transform: translateY(-50%) scale(var(--sx, 1), var(--sy, 1));
+  animation: fade-up 1s var(--ease-out) 0.2s both;
+}
+
+.page-text {
+  position: absolute;
+  left: var(--l);
+  top: var(--t);
+  width: var(--w);
+  height: var(--h);
+  margin: 0;
+  overflow: hidden;
+  font-family: 'Mikhmoret DL 1.1 AAA', 'Mikhmoret', var(--font-cond);
+  font-weight: 300;
+  font-stretch: 100%;
+  font-size: calc(var(--fs) * 100cqw);
+  line-height: calc(var(--lh) * 100cqw);
+  letter-spacing: 0.02em;
+  text-align: justify;
+  text-align-last: right;
+  color: var(--band, #8c7460);
+  animation: fade-up 1s var(--ease-out) 0.3s both;
+}
+
+// Tablet: keep the page as one scaled sheet, as on a large screen (overrides the two-column grid).
+@media (min-width: 560px) and (max-width: 899px) {
+  .gp--flush {
+    --gp-width: 100%;
+  }
+
+  .mosaic.mosaic--flush {
+    display: block;
+    aspect-ratio: var(--aspect);
+
+    & + .mosaic--flush {
+      margin-top: 0;
+    }
+
+    .tile,
+    .tile--wide {
+      position: absolute;
+      left: var(--l);
+      top: var(--t);
+      width: var(--w);
+      height: var(--h);
+      aspect-ratio: auto;
+      grid-column: auto;
+    }
+  }
+}
+
+// Phone: the images stack (rules above); titled bands and the text become full-width rows.
+@media (max-width: 559px) {
+  .gp--flush {
+    --gp-width: 100%;
+  }
+
+  .mosaic.mosaic--flush {
+    // minmax(0, …): a large image must not widen the column past the screen.
+    grid-template-columns: minmax(0, 1fr);
+    gap: 10px;
+    padding: 10px;
+
+    & + .mosaic--flush {
+      margin-top: 0;
+    }
+  }
+
+  .page-band {
+    position: static;
+    grid-column: 1 / -1;
+    height: auto;
+    // The title band of the first page comes first, the others close their page.
+    order: 1;
+    margin-inline: -10px;
+    padding: 14px 10px;
+
+    &--top {
+      order: -2;
+    }
+
+    &--empty {
+      display: none;
+    }
+  }
+
+  .page-band__text {
+    position: static;
+    display: block;
+    width: auto;
+    white-space: normal;
+    font-size: clamp(20px, 6.5vw, 30px);
+    transform: none;
+  }
+
+  .page-text {
+    position: static;
+    grid-column: 1 / -1;
+    order: -1;
+    width: auto;
+    height: auto;
+    font-size: 16px;
+    line-height: 1.7;
+  }
+}
+
 /* ---------- Keyframes ---------- */
 @keyframes title-in {
   from {

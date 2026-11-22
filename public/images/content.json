@@ -86,10 +86,10 @@
               { "title": "משמר הגבול 2 תמ\"א 38", "folder": "eshkol-tama38" },
 
               { "title": "ירמיהו 52", "folder": "yirmiyahu-52" },
-              { "title": "כנפי נשרים פינת נאג'רה", "folder": "kanfei-nesharim" },
+              { "title": "כנפי נשרים פינת נג'ארה", "folder": "kanfei-nesharim" },
               { "title": "לינקולן 8", "folder": "lincoln" },
               { "title": "דו משפחתי במרחב בישוב רחלים", "folder": "two-family" },
-              { "title": "מיכלין 3", "folder": "michlin-2" },
+              { "title": "מיכלין", "folder": "michlin-2" },
 
               { "title": "עין גדי 4", "folder": "ein-gedi" },
               { "title": "ירמיהו 46", "folder": "yirmiyahu" },
@@ -133,7 +133,7 @@
               { "title": "סלון במרחב", "folder": "bamerchav-salon" },
               { "title": "חדר פנימיה יקירי ירושלים", "folder": "yakirei-yerushalayim-dorm" },
               { "title": "אודיטוריום", "folder": "auditorium" },
-              { "title": "פינת אוכל", "folder": "dining-corner" }
+              { "title": "פינת אוכל בקריית משה", "folder": "dining-corner" }
             ]
           }
         ]
@@ -312,6 +312,7 @@
         "title": "הדמיות",
         "titleLatin": "AI",
         "theme": "beige",
+        "flush": true,
         "categories": [
           {
             "id": "all",
@@ -319,35 +320,47 @@
             "folder": "images/ai/gallery",
             "layout": "ai",
             "projects": [
-              { "title": "", "folder": "synagogue-arched-ark" },
-              { "title": "", "folder": "reading-nook" },
-              { "title": "", "folder": "bedroom-navy" },
-              { "title": "", "folder": "synagogue-long-hall" },
-              { "title": "", "folder": "round-lounge" },
-              { "title": "", "folder": "living-room-sofa" },
-              { "title": "", "folder": "synagogue-carved-ark" },
-              { "title": "", "folder": "kids-bedroom" },
-              { "title": "", "folder": "bedroom-desk" },
-
-              { "title": "", "folder": "girls-room" },
-              { "title": "", "folder": "living-grey-sofa" },
-              { "title": "", "folder": "kitchen-mint" },
-              { "title": "", "folder": "office" },
-              { "title": "", "folder": "kitchen-white" },
-              { "title": "", "folder": "kitchen-chandelier" },
-              { "title": "", "folder": "living-pink-sofa" },
-              { "title": "", "folder": "living-mint" },
-              { "title": "", "folder": "living-beige" },
-
-              { "title": "", "folder": "balcony-sea" },
-              { "title": "", "folder": "floor-plan" },
-              { "title": "", "folder": "glass-tower" },
-              { "title": "", "folder": "balcony-jerusalem" },
-              { "title": "", "folder": "office-building-night" },
-              { "title": "", "folder": "white-building" },
-              { "title": "", "folder": "stone-building" },
-              { "title": "", "folder": "glass-offices" },
-              { "title": "", "folder": "tower-sunset" }
+              { "title": "", "folder": "yakirei-synagogue-4" },
+              { "title": "", "folder": "yakirei-synagogue-3" },
+              { "title": "", "folder": "yakirei-synagogue" },
+              { "title": "", "folder": "image-24" },
+              { "title": "", "folder": "kids-room" },
+              { "title": "", "folder": "image-22" },
+              { "title": "", "folder": "image-7" },
+              { "title": "", "folder": "inspiration" },
+              { "title": "", "folder": "image-8" },
+              { "title": "", "folder": "image-11" },
+              { "title": "", "folder": "image-14" },
+              { "title": "", "folder": "apartment" },
+              { "title": "", "folder": "image-23" },
+              { "title": "", "folder": "image-25" },
+              { "title": "", "folder": "image-10" },
+              { "title": "", "folder": "image-15" },
+              { "title": "", "folder": "image-16" },
+              { "title": "", "folder": "image-19" },
+              { "title": "", "folder": "facade-sketch" },
+              { "title": "", "folder": "rashi" },
+              { "title": "", "folder": "ayelet-hashachar-day" },
+              { "title": "", "folder": "ayelet-hashachar-night" },
+              { "title": "", "folder": "image-27" },
+              { "title": "", "folder": "image-26" },
+              { "title": "", "folder": "image-3" },
+              { "title": "", "folder": "image-5" },
+              { "title": "", "folder": "image-21" },
+              { "title": "", "folder": "image-18" },
+              { "title": "", "folder": "image-9" },
+              { "title": "", "folder": "image-17" },
+              { "title": "", "folder": "image-20" },
+              { "title": "", "folder": "lake-house" },
+              { "title": "", "folder": "round-window-bedroom" },
+              { "title": "", "folder": "spring-bathroom" },
+              { "title": "", "folder": "kitchen-options" },
+              { "title": "", "folder": "kitchen-board" },
+              { "title": "", "folder": "building" },
+              { "title": "", "folder": "sales-plan" },
+              { "title": "", "folder": "office-plan" },
+              { "title": "", "folder": "sales-plan-2" },
+              { "title": "", "folder": "garden-plan" }
             ]
           }
         ]
