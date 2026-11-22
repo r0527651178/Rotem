@@ -131,6 +131,16 @@ export const MOSAIC_TEMPLATES: MosaicTemplate[] = [
       { x: 651, y: 622, w: 622, h: 340 },
     ],
   },
+  {
+    sketch: 39, // extra page: two photos on top, a wide and a narrow one below, titles show on hover like the other pages
+    height: 1369,
+    slots: [
+      { x: 978, y: 0, w: 940, h: 609 },
+      { x: 0, y: 0, w: 953, h: 609 },
+      { x: 1274, y: 624, w: 644, h: 745 },
+      { x: 0, y: 624, w: 1253, h: 745 },
+    ],
+  },
 ];
 
 /**
