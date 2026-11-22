@@ -124,14 +124,14 @@
             "projects": [
               { "title": "סלון אגודת אחים", "folder": "agudat-achim-salon" },
               { "title": "סלון נחלת אחים שדרות בן צבי", "folder": "ben-zvi-kitchen" },
-              { "title": "חדרי הנצחה בית הגיבורים", "folder": "beit-hagiborim-memorial" },
+              { "title": "חדרי הנצחה בית הגיבורים", "folder": "beit-hagiborim-memorial", "views": 5 },
               { "title": "סלון מטבח כרמי הנדיב", "folder": "karmei-hanadiv-kitchen" },
               { "title": "מבט לנוף צפחה שערי העיר", "folder": "shaarei-hair-view" },
               { "title": "לובי רכסים", "folder": "rechasim-lobby" },
               { "title": "בריכה על הגג במאפו 4", "folder": "mapu-rooftop-pool" },
               { "title": "סלון חסידי שטראוס", "folder": "strauss-salon" },
               { "title": "סלון נופי נחל צופים", "folder": "nachal-tzofim-salon" },
-              { "title": "ספריה בית הגיבורים", "folder": "beit-hagiborim-library" },
+              { "title": "ספריה בית הגיבורים", "folder": "beit-hagiborim-library", "views": 5 },
               { "title": "פנים קק\"ל", "folder": "kkl-interior" },
               { "title": "סלון קריית משה", "folder": "kiryat-moshe-salon" },
               { "title": "סלון במרחב", "folder": "bamerchav-salon" },
@@ -208,7 +208,7 @@
               { "title": "בית כנסת דביר", "folder": "dvir" },
               { "title": "ישיבת מקדש מלך", "folder": "mikdash-melech" },
 
-              { "title": "מרכז תורני \"בית הגיבורים\" בפסגת זאב", "folder": "merkaz-torani-pisgat-zeev", "views": 3 },
+              { "title": "מרכז תורני \"בית הגיבורים\" בפסגת זאב", "folder": "merkaz-torani-pisgat-zeev" },
               { "title": "בית הכנסת בית שלמה במבשרת", "folder": "beit-shlomo" },
               { "title": "ישיבת אור שמואל", "folder": "or-shmuel", "views": 2 },
               { "title": "בית כנסת בפסגת זאב", "folder": "pisgat-zeev" }
@@ -226,7 +226,7 @@
               { "title": "עזרת נשים סטריקוב", "folder": "strikov-ezrat-nashim" },
 
               { "title": "חדר אוכל יקירי", "folder": "yakirei-dining" },
-              { "title": "בית כנסת מרכז תורני", "folder": "merkaz-torani" },
+              { "title": "בית כנסת מרכז תורני", "folder": "merkaz-torani", "views": 5 },
               { "title": "", "folder": "chandelier-hall" },
               { "title": "בית מדרש אור שמואל", "folder": "or-shmuel", "views": 2 }
             ]
@@ -282,7 +282,7 @@
             "folder": "images/sales-plans/3d",
             "layout": "sales-plans-3d",
             "projects": [
-              { "title": "תוכנית קומת הסטודנטים בבית הגיבורים", "folder": "beit-hagiborim-students" },
+              { "title": "תוכנית קומת הסטודנטים בבית הגיבורים", "folder": "beit-hagiborim-students", "views": 5 },
               { "title": "תוכנית דירה בקריית משה", "folder": "kiryat-moshe-apartment" },
               { "title": "קומה בבניין שיח סוד", "folder": "siach-sod-floor" },
               { "title": "תוכנית דירה בקריית משה", "folder": "kiryat-moshe-apartment-2" },
