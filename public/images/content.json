@@ -78,7 +78,7 @@
             "label": "חוץ",
             "folder": "images/visualization/exterior",
             "projects": [
-              { "title": "אלקבץ 38", "folder": "alkabetz" },
+              { "title": "אלקבץ 38", "folder": "alkabetz", "views": 2 },
               { "title": "מיכלין 3", "folder": "michlin" },
               { "title": "מלון דירות\nברח' ההסתדרות 5", "folder": "hahistadrut-hotel" },
               { "title": "פינוי בינוי מאפו 4", "folder": "mapu-renewal" },
@@ -95,7 +95,7 @@
               { "title": "ירמיהו 46", "folder": "yirmiyahu" },
               { "title": "מרכז חסידי סטריקוב רחוב דוד", "folder": "strikov-center" },
               { "title": "קנאי הגליל 9", "folder": "kanai-hagalil" },
-              { "title": "הרב פרנק 17", "folder": "harav-frank" },
+              { "title": "הרב פרנק 17", "folder": "harav-frank", "views": 2 },
               { "title": "מבנה תעשייתי בעטרות", "folder": "atarot-industrial" },
 
               { "title": "מרכז מסחרי עימנואל", "folder": "emmanuel-center" },
@@ -109,7 +109,7 @@
               { "title": "משמר הגבול 7", "folder": "mishmar-hagvul-7" },
               { "title": "רש\"י 113", "folder": "rashi" },
               { "title": "משמר הגבול 6", "folder": "mishmar-hagvul-6" },
-              { "title": "אכסניית נוער במבשרת ציון", "folder": "youth-hostel" }
+              { "title": "אכסניית נוער במבשרת ציון", "folder": "youth-hostel", "views": 2 }
             ]
           },
           {
@@ -194,17 +194,17 @@
             "folder": "images/synagogues/exterior",
             "layout": "synagogues-exterior",
             "projects": [
-              { "title": "בית כנסת הגדול בנווה יעקב", "folder": "neve-yaakov" },
-              { "title": "ישיבת חיי משה", "folder": "chayei-moshe" },
+              { "title": "בית כנסת הגדול בנווה יעקב", "folder": "neve-yaakov", "views": 2 },
+              { "title": "ישיבת חיי משה", "folder": "chayei-moshe", "views": 4 },
               { "title": "בית הכנסת איילת השחר", "folder": "ayelet-hashachar", "views": 2 },
-              { "title": "בית כנסת נועם ה' ברחוב אליעזר ארגוב בית וגן", "folder": "noam-hashem" },
+              { "title": "בית כנסת נועם ה' ברחוב אליעזר ארגוב בית וגן", "folder": "noam-hashem", "views": 3 },
 
               { "title": "בית כנסת הגר\"א בשערי חסד", "folder": "hagra-shaarei-chesed", "views": 2 },
               { "title": "בית כנסת אהבת שלום - תל ציון", "folder": "ahavat-shalom" },
               { "title": "בית כנסת דביר", "folder": "dvir" },
               { "title": "ישיבת מקדש מלך", "folder": "mikdash-melech" },
 
-              { "title": "מרכז תורני \"בית הגיבורים\" בפסגת זאב", "folder": "merkaz-torani-pisgat-zeev" },
+              { "title": "מרכז תורני \"בית הגיבורים\" בפסגת זאב", "folder": "merkaz-torani-pisgat-zeev", "views": 3 },
               { "title": "בית הכנסת בית שלמה במבשרת", "folder": "beit-shlomo" },
               { "title": "ישיבת אור שמואל", "folder": "or-shmuel", "views": 2 },
               { "title": "בית כנסת בפסגת זאב", "folder": "pisgat-zeev" }
@@ -217,14 +217,14 @@
             "layout": "synagogues",
             "projects": [
               { "title": "מקדש מלך פנים", "folder": "mikdash-melech" },
-              { "title": "בית כנסת בית תפילה", "folder": "beit-tefila" },
+              { "title": "בית כנסת בית תפילה", "folder": "beit-tefila", "views": 5 },
               { "title": "בית כנסת ביוף", "folder": "biuf" },
               { "title": "עזרת נשים סטריקוב", "folder": "strikov-ezrat-nashim" },
 
               { "title": "חדר אוכל יקירי", "folder": "yakirei-dining" },
               { "title": "בית כנסת מרכז תורני", "folder": "merkaz-torani" },
               { "title": "", "folder": "chandelier-hall" },
-              { "title": "בית מדרש אור שמואל", "folder": "or-shmuel" }
+              { "title": "בית מדרש אור שמואל", "folder": "or-shmuel", "views": 2 }
             ]
           }
         ]
