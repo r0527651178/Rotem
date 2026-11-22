@@ -8,39 +8,51 @@
 
 | # | הכותרת באתר | התיקייה | גודל מומלץ (רוחב × גובה) | צורה |
 |---|---|---|---|---|
-| 1 | (בלי כותרת) | `gallery/synagogue-arched-ark/` | 900 × 550 | לרוחב |
-| 2 | (בלי כותרת) | `gallery/reading-nook/` | 550 × 550 | כמעט ריבוע |
-| 3 | (בלי כותרת) | `gallery/bedroom-navy/` | 950 × 550 | רחבה |
-| 4 | (בלי כותרת) | `gallery/synagogue-long-hall/` | 900 × 550 | לרוחב |
-| 5 | (בלי כותרת) | `gallery/round-lounge/` | 950 × 550 | רחבה |
-| 6 | (בלי כותרת) | `gallery/living-room-sofa/` | 950 × 550 | רחבה |
-| 7 | (בלי כותרת) | `gallery/synagogue-carved-ark/` | 900 × 550 | לרוחב |
-| 8 | (בלי כותרת) | `gallery/kids-bedroom/` | 950 × 550 | רחבה |
-| 9 | (בלי כותרת) | `gallery/bedroom-desk/` | 950 × 550 | רחבה |
-| 10 | (בלי כותרת) | `gallery/girls-room/` | 950 × 950 | כמעט ריבוע |
-| 11 | (בלי כותרת) | `gallery/living-grey-sofa/` | 950 × 500 | רחבה |
-| 12 | (בלי כותרת) | `gallery/kitchen-mint/` | 1100 × 600 | רחבה |
-| 13 | (בלי כותרת) | `gallery/office/` | 950 × 550 | רחבה |
-| 14 | (בלי כותרת) | `gallery/kitchen-white/` | 1100 × 600 | רחבה |
-| 15 | (בלי כותרת) | `gallery/kitchen-chandelier/` | 950 × 950 | כמעט ריבוע |
-| 16 | (בלי כותרת) | `gallery/living-pink-sofa/` | 950 × 550 | רחבה |
-| 17 | (בלי כותרת) | `gallery/living-mint/` | 1100 × 600 | רחבה |
-| 18 | (בלי כותרת) | `gallery/living-beige/` | 950 × 500 | רחבה |
-| 19 | (בלי כותרת) | `gallery/balcony-sea/` | 1100 × 600 | רחבה |
-| 20 | (בלי כותרת) | `gallery/floor-plan/` | 650 × 1150 | גבוהה |
-| 21 | (בלי כותרת) | `gallery/glass-tower/` | 950 × 950 | כמעט ריבוע |
-| 22 | (בלי כותרת) | `gallery/balcony-jerusalem/` | 1050 × 600 | רחבה |
-| 23 | (בלי כותרת) | `gallery/office-building-night/` | 800 × 400 | רחבה |
-| 24 | (בלי כותרת) | `gallery/white-building/` | 750 × 450 | רחבה |
-| 25 | (בלי כותרת) | `gallery/stone-building/` | 800 × 850 | כמעט ריבוע |
-| 26 | (בלי כותרת) | `gallery/glass-offices/` | 1100 × 600 | רחבה |
-| 27 | (בלי כותרת) | `gallery/tower-sunset/` | 1050 × 600 | רחבה |
+| 1 | (בלי כותרת) | `gallery/yakirei-synagogue-4/` | 500 × 850 | גבוהה |
+| 2 | (בלי כותרת) | `gallery/yakirei-synagogue-3/` | 850 × 550 | לרוחב |
+| 3 | (בלי כותרת) | `gallery/yakirei-synagogue/` | 850 × 550 | לרוחב |
+| 4 | (בלי כותרת) | `gallery/image-24/` | 850 × 550 | לרוחב |
+| 5 | (בלי כותרת) | `gallery/kids-room/` | 900 × 550 | רחבה |
+| 6 | (בלי כותרת) | `gallery/image-22/` | 900 × 500 | רחבה |
+| 7 | (בלי כותרת) | `gallery/image-7/` | 500 × 500 | כמעט ריבוע |
+| 8 | (בלי כותרת) | `gallery/inspiration/` | 950 × 500 | רחבה |
+| 9 | (בלי כותרת) | `gallery/image-8/` | 950 × 500 | רחבה |
+| 10 | (בלי כותרת) | `gallery/image-11/` | 900 × 500 | רחבה |
+| 11 | (בלי כותרת) | `gallery/image-14/` | 900 × 900 | כמעט ריבוע |
+| 12 | (בלי כותרת) | `gallery/apartment/` | 900 × 900 | כמעט ריבוע |
+| 13 | (בלי כותרת) | `gallery/image-23/` | 950 × 500 | רחבה |
+| 14 | (בלי כותרת) | `gallery/image-25/` | 950 × 500 | רחבה |
+| 15 | (בלי כותרת) | `gallery/image-10/` | 950 × 500 | רחבה |
+| 16 | (בלי כותרת) | `gallery/image-15/` | 950 × 500 | רחבה |
+| 17 | (בלי כותרת) | `gallery/image-16/` | 1050 × 600 | רחבה |
+| 18 | (בלי כותרת) | `gallery/image-19/` | 1050 × 600 | רחבה |
+| 19 | (בלי כותרת) | `gallery/facade-sketch/` | 1050 × 600 | רחבה |
+| 20 | (בלי כותרת) | `gallery/rashi/` | 1400 × 950 | לרוחב |
+| 21 | (בלי כותרת) | `gallery/ayelet-hashachar-day/` | 1400 × 950 | לרוחב |
+| 22 | (בלי כותרת) | `gallery/ayelet-hashachar-night/` | 1650 × 950 | רחבה |
+| 23 | (בלי כותרת) | `gallery/image-27/` | 1650 × 950 | רחבה |
+| 24 | (בלי כותרת) | `gallery/image-26/` | 1050 × 600 | רחבה |
+| 25 | (בלי כותרת) | `gallery/image-3/` | 1050 × 600 | רחבה |
+| 26 | (בלי כותרת) | `gallery/image-5/` | 1050 × 600 | רחבה |
+| 27 | (בלי כותרת) | `gallery/image-21/` | 600 × 1100 | גבוהה |
+| 28 | (בלי כותרת) | `gallery/image-18/` | 700 × 400 | רחבה |
+| 29 | (בלי כותרת) | `gallery/image-9/` | 1050 × 600 | רחבה |
+| 30 | (בלי כותרת) | `gallery/image-17/` | 900 × 900 | כמעט ריבוע |
+| 31 | (בלי כותרת) | `gallery/image-20/` | 750 × 400 | רחבה |
+| 32 | (בלי כותרת) | `gallery/lake-house/` | 750 × 800 | כמעט ריבוע |
+| 33 | (בלי כותרת) | `gallery/round-window-bedroom/` | 1000 × 850 | לרוחב |
+| 34 | (בלי כותרת) | `gallery/spring-bathroom/` | 1000 × 850 | לרוחב |
+| 35 | (בלי כותרת) | `gallery/kitchen-options/` | 1000 × 850 | לרוחב |
+| 36 | (בלי כותרת) | `gallery/kitchen-board/` | 1000 × 850 | לרוחב |
+| 37 | (בלי כותרת) | `gallery/building/` | 1000 × 850 | לרוחב |
+| 38 | (בלי כותרת) | `gallery/sales-plan/` | 1000 × 850 | לרוחב |
+| 39 | (בלי כותרת) | `gallery/office-plan/` | 1000 × 850 | לרוחב |
+| 40 | (בלי כותרת) | `gallery/sales-plan-2/` | 1000 × 850 | לרוחב |
+| 41 | (בלי כותרת) | `gallery/garden-plan/` | 1000 × 850 | לרוחב |
 
 ## תמונות חסרות
 
-- `gallery/synagogue-long-hall/1.jpg`
-- `gallery/living-grey-sofa/1.jpg`
-- `gallery/living-beige/1.jpg`
+אין.
 
 ## הסדר והפריסה
 

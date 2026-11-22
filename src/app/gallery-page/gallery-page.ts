@@ -1,4 +1,4 @@
-﻿import {
+import {
   Component,
   HostListener,
   computed,
@@ -17,8 +17,10 @@ import {
   MOSAIC_LAYOUTS,
   MOSAIC_TEMPLATES,
   MOSAIC_WIDTH,
+  MosaicBand,
   MosaicSlot,
   MosaicTemplate,
+  MosaicText,
 } from './mosaic-layouts';
 
 export interface Tile {
@@ -48,9 +50,36 @@ export interface Tile {
   frame?: { left: number; top: number; width: number; height: number };
 }
 
+/** A brown strip under the tiles, in % of the block (AI pages). */
+export interface Band {
+  top: number;
+  height: number;
+  text?: string;
+  left: number;
+  width: number;
+  /** Font size as a fraction of the block width, and glyph scale. */
+  size: number;
+  scaleX: number;
+  scaleY: number;
+}
+
+/** A paragraph placed like a tile, in % of the block. */
+export interface TextBox {
+  left: number;
+  top: number;
+  width: number;
+  height: number;
+  text: string;
+  size: number;
+  leading: number;
+}
+
 export interface Block {
   aspect: number;
   tiles: Tile[];
+  /** Brown page strips (AI pages). */
+  strips: Band[];
+  texts: TextBox[];
   /** Some tile has an always-visible caption (plans, brochures). */
   captioned: boolean;
   /** Captions are bands that name a group of pages (brochures). */
@@ -235,7 +264,7 @@ export class GalleryPage {
       const remaining = items.length - i;
       if (remaining >= template.slots.length) {
         const chunk = items.slice(i, i + template.slots.length);
-        blocks.push(this.block(chunk, template.slots, template.height, i));
+        blocks.push(this.block(chunk, template.slots, template.height, i, template.bands, template.texts));
         i += template.slots.length;
         t++;
         continue;
@@ -256,16 +285,42 @@ export class GalleryPage {
     return blocks;
   }
 
-  private block(items: Item[], slots: MosaicSlot[], height: number, offset: number): Block {
+  private block(
+    items: Item[],
+    slots: MosaicSlot[],
+    height: number,
+    offset: number,
+    bands: MosaicBand[] = [],
+    texts: MosaicText[] = [],
+  ): Block {
     const used = slots.slice(0, items.length);
+    const px = (v: number) => (v / MOSAIC_WIDTH) * 100;
+    const py = (v: number) => (v / height) * 100;
     return {
       aspect: MOSAIC_WIDTH / height,
+      strips: bands.map((b) => ({
+        top: py(b.y),
+        height: py(b.h),
+        text: b.text,
+        left: px(b.x ?? 0),
+        width: px(b.w ?? MOSAIC_WIDTH),
+        size: (b.size ?? 0) / MOSAIC_WIDTH,
+        scaleX: b.scaleX ?? 1,
+        scaleY: b.scaleY ?? 1,
+      })),
+      texts: texts.map((t) => ({
+        left: px(t.x),
+        top: py(t.y),
+        width: px(t.w),
+        height: py(t.h),
+        text: t.text ?? this.capability()?.text ?? '',
+        size: t.size / MOSAIC_WIDTH,
+        leading: t.leading / MOSAIC_WIDTH,
+      })),
       captioned: used.some((s) => !!s.caption),
       bands: used.some((s) => !!s.caption?.band),
       tiles: items.map((item, k) => {
         const s = slots[k];
-        const px = (v: number) => (v / MOSAIC_WIDTH) * 100;
-        const py = (v: number) => (v / height) * 100;
         return {
           ...item,
           left: px(s.x),

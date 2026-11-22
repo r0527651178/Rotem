@@ -1,6 +1,6 @@
-﻿@if (content(); as c) {
+@if (content(); as c) {
   @if (page(); as p) {
-    <main class="gp" [class.gp--dark]="p.theme === 'dark'" [class.gp--beige]="p.theme === 'beige'">
+    <main class="gp" [class.gp--dark]="p.theme === 'dark'" [class.gp--beige]="p.theme === 'beige'" [class.gp--flush]="!!p.flush">
       <header class="gp__head">
         <h1 class="gp__title">
           {{ p.title }}
@@ -38,7 +38,40 @@
         [attr.aria-label]="category()?.label"
       >
           @for (block of blocks(); track $index) {
-            <div class="mosaic" [class.mosaic--plans]="block.captioned" [class.mosaic--bands]="block.bands" [style.--aspect]="block.aspect">
+            <div class="mosaic" [class.mosaic--plans]="block.captioned" [class.mosaic--bands]="block.bands" [class.mosaic--flush]="!!p.flush" [style.--aspect]="block.aspect">
+              @for (band of block.strips; track $index) {
+                <div
+                  class="page-band"
+                  [class.page-band--empty]="!band.text"
+                  [class.page-band--top]="band.top === 0"
+                  [style.--t.%]="band.top"
+                  [style.--h.%]="band.height"
+                  [attr.aria-hidden]="!band.text || band.text === fullTitle() ? true : null"
+                >
+                  @if (band.text) {
+                    <span
+                      class="page-band__text"
+                      [style.--l.%]="band.left"
+                      [style.--w.%]="band.width"
+                      [style.--fs]="band.size"
+                      [style.--sx]="band.scaleX"
+                      [style.--sy]="band.scaleY"
+                      >{{ band.text }}</span
+                    >
+                  }
+                </div>
+              }
+              @for (t of block.texts; track $index) {
+                <p
+                  class="page-text"
+                  [style.--l.%]="t.left"
+                  [style.--t.%]="t.top"
+                  [style.--w.%]="t.width"
+                  [style.--h.%]="t.height"
+                  [style.--fs]="t.size"
+                  [style.--lh]="t.leading"
+                >{{ t.text }}</p>
+              }
               @for (tile of block.tiles; track tile.src) {
                 @let missing = failed().has(tile.src);
                 @if (tile.frame; as f) {
