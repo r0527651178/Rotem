@@ -226,6 +226,30 @@
   }
 }
 
+// Large screens only (not laptops): the three lines are 75% smaller, in length and spacing.
+// Thickness is 2 px so the small lines don't merge. The X when open keeps its size (35% of the button).
+@media (min-width: 1700px) {
+  .burger {
+    --b: max(3px, 0.3vw);
+    --t: 2px;
+  }
+
+  .header:not(.header--open) {
+    .burger__line--1 {
+      width: 25%;
+    }
+    .burger__line--2 {
+      width: 19.5%;
+    }
+    .burger__line--3 {
+      width: 14.25%;
+    }
+    .burger:hover .burger__line {
+      width: 25%;
+    }
+  }
+}
+
 /* ---------- Menu (sketches 6 and 39): black panel + beige strip on the left ---------- */
 .menu {
   --strip: 21.67%;
