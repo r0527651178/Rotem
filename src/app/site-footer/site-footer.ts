@@ -52,7 +52,7 @@ export class SiteFooter {
   }
 
   /**
-   * There is no server yet, so the form opens the visitor's mail app with a ready message.
+   * There is no server yet, so the form opens Gmail compose with a ready message.
    * Replace this with a call to a form service / API when one is available.
    */
   protected submit(): void {
@@ -70,11 +70,13 @@ export class SiteFooter {
       `סוג פרויקט: ${v.type || '-'}`,
     ].join('\n');
     const subject = `פנייה מהאתר – ${v.name.trim()}`;
+    // Opens a pre-filled Gmail compose window in a new tab (works without a desktop mail app).
     const href =
-      `mailto:${this.contact().email}` +
-      `?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      'https://mail.google.com/mail/?view=cm&fs=1' +
+      `&to=${encodeURIComponent(this.contact().email)}` +
+      `&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
-    window.location.href = href;
+    window.open(href, '_blank', 'noopener');
     this.status.set('sent');
     this.form.reset();
   }
