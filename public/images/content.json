@@ -7,7 +7,7 @@
     { "label": "אודות", "target": "/about" },
     { "label": "הדמיות", "target": "visualization" },
     { "label": "שימור", "target": "conservation" },
-    { "label": "בתי כנסת", "target": "synagogues" },
+    { "label": "מבנים תורניים", "target": "synagogues" },
     { "label": "תוכניות מכר", "target": "sales-plans" },
     { "label": "AI", "target": "ai" },
     { "label": "ברושור פרויקט נדל\"ן", "target": "brochure" },
