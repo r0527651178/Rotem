@@ -14,14 +14,14 @@
 |---|---|---|---|---|
 | 1 | בית כנסת הגדול בנווה יעקב | `exterior/neve-yaakov/` | 1650 × 1050 | לרוחב |
 | 2 | ישיבת חיי משה | `exterior/chayei-moshe/` | 1350 × 1050 | לרוחב |
-| 3 | איילת השחר | `exterior/ayelet-hashachar/` | 1000 × 900 | לרוחב |
-| 4 | בית כנסת נועם ה' | `exterior/noam-hashem/` | 2050 × 900 | רחבה |
-| 5 | בית כנסת הגר"א שערי חסד | `exterior/hagra-shaarei-chesed/` | 1450 × 850 | רחבה |
+| 3 | בית הכנסת איילת השחר | `exterior/ayelet-hashachar/` | 1000 × 900 | לרוחב |
+| 4 | בית כנסת נועם ה' ברחוב אליעזר ארגוב בית וגן | `exterior/noam-hashem/` | 2050 × 900 | רחבה |
+| 5 | בית כנסת הגר"א בשערי חסד | `exterior/hagra-shaarei-chesed/` | 1450 × 850 | רחבה |
 | 6 | בית כנסת אהבת שלום - תל ציון | `exterior/ahavat-shalom/` | 1600 × 850 | רחבה |
 | 7 | בית כנסת דביר | `exterior/dvir/` | 800 × 1000 | לאורך |
 | 8 | ישיבת מקדש מלך | `exterior/mikdash-melech/` | 2250 × 1000 | רחבה |
-| 9 | מרכז תורני פסגת זאב | `exterior/merkaz-torani-pisgat-zeev/` | 1450 × 850 | רחבה |
-| 10 | בית שלמה במבשרת | `exterior/beit-shlomo/` | 1600 × 850 | רחבה |
+| 9 | מרכז תורני "בית הגיבורים" בפסגת זאב | `exterior/merkaz-torani-pisgat-zeev/` | 1450 × 850 | רחבה |
+| 10 | בית הכנסת בית שלמה במבשרת | `exterior/beit-shlomo/` | 1600 × 850 | רחבה |
 | 11 | ישיבת אור שמואל | `exterior/or-shmuel/` | 1700 × 950 | רחבה |
 | 12 | בית כנסת בפסגת זאב | `exterior/pisgat-zeev/` | 1350 × 950 | לרוחב |
 
