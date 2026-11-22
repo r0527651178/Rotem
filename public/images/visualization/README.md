@@ -19,34 +19,34 @@
 
 | # | הכותרת באתר | התיקייה | גודל מומלץ (רוחב × גובה) | צורה |
 |---|---|---|---|---|
-| 1 | אלקבץ | `exterior/alkabetz/` | 1000 × 850 | לרוחב |
-| 2 | מיכלין | `exterior/michlin/` | 1000 × 850 | לרוחב |
-| 3 | מלון דירות ברח' ההסתדרות | `exterior/hahistadrut-hotel/` | 1000 × 850 | לרוחב |
-| 4 | פינוי בינוי מאפו | `exterior/mapu-renewal/` | 1000 × 1050 | כמעט ריבוע |
-| 5 | קראל נטר | `exterior/kral-neter/` | 1000 × 1050 | כמעט ריבוע |
-| 6 | שדרות אשכול תמ"א 38 | `exterior/eshkol-tama38/` | 1000 × 1050 | כמעט ריבוע |
+| 1 | אלקבץ 38 | `exterior/alkabetz/` | 1000 × 850 | לרוחב |
+| 2 | מיכלין 3 | `exterior/michlin/` | 1000 × 850 | לרוחב |
+| 3 | מלון דירות ברח' ההסתדרות 5 | `exterior/hahistadrut-hotel/` | 1000 × 850 | לרוחב |
+| 4 | פינוי בינוי מאפו 4 | `exterior/mapu-renewal/` | 1000 × 1050 | כמעט ריבוע |
+| 5 | קראל נטר 22 ראשון לציון | `exterior/kral-neter/` | 1000 × 1050 | כמעט ריבוע |
+| 6 | משמר הגבול 2 תמ"א 38 | `exterior/eshkol-tama38/` | 1000 × 1050 | כמעט ריבוע |
 | 7 | ירמיהו 52 | `exterior/yirmiyahu-52/` | 1000 × 1400 | לאורך |
-| 8 | כנפי נשרים נג'ארה | `exterior/kanfei-nesharim/` | 1000 × 1400 | לאורך |
-| 9 | לינקולן | `exterior/lincoln/` | 1000 × 1100 | כמעט ריבוע |
-| 10 | דו משפחתי בישוב במרחב | `exterior/two-family/` | 2050 × 800 | רחבה |
-| 11 | מיכלין | `exterior/michlin-2/` | 1000 × 1100 | כמעט ריבוע |
-| 12 | עין גדי | `exterior/ein-gedi/` | 1000 × 1350 | לאורך |
-| 13 | ירמיהו | `exterior/yirmiyahu/` | 1000 × 950 | כמעט ריבוע |
-| 14 | מרכז חסידי סטריקוב | `exterior/strikov-center/` | 1000 × 1650 | גבוהה |
-| 15 | קנאי הגליל | `exterior/kanai-hagalil/` | 1000 × 800 | לרוחב |
-| 16 | הרב פרנק | `exterior/harav-frank/` | 1000 × 1200 | לאורך |
+| 8 | כנפי נשרים פינת נאג'רה | `exterior/kanfei-nesharim/` | 1000 × 1400 | לאורך |
+| 9 | לינקולן 8 | `exterior/lincoln/` | 1000 × 1100 | כמעט ריבוע |
+| 10 | דו משפחתי במרחב בישוב רחלים | `exterior/two-family/` | 2050 × 800 | רחבה |
+| 11 | מיכלין 3 | `exterior/michlin-2/` | 1000 × 1100 | כמעט ריבוע |
+| 12 | עין גדי 4 | `exterior/ein-gedi/` | 1000 × 1350 | לאורך |
+| 13 | ירמיהו 46 | `exterior/yirmiyahu/` | 1000 × 950 | כמעט ריבוע |
+| 14 | מרכז חסידי סטריקוב רחוב דוד | `exterior/strikov-center/` | 1000 × 1650 | גבוהה |
+| 15 | קנאי הגליל 9 | `exterior/kanai-hagalil/` | 1000 × 800 | לרוחב |
+| 16 | הרב פרנק 17 | `exterior/harav-frank/` | 1000 × 1200 | לאורך |
 | 17 | מבנה תעשייתי בעטרות | `exterior/atarot-industrial/` | 1000 × 500 | רחבה |
 | 18 | מרכז מסחרי עימנואל | `exterior/emmanuel-center/` | 1000 × 800 | לרוחב |
-| 19 | שדרות בן צבי | `exterior/ben-zvi/` | 1000 × 1250 | לאורך |
-| 20 | קרן היסוד | `exterior/keren-hayesod/` | 1000 × 1550 | גבוהה |
+| 19 | נחלת אחים - שדרות בן צבי | `exterior/ben-zvi/` | 1000 × 1250 | לאורך |
+| 20 | קרן היסוד 27 | `exterior/keren-hayesod/` | 1000 × 1550 | גבוהה |
 | 21 | רח' אגרון | `exterior/agron/` | 1000 × 850 | לרוחב |
 | 22 | מבוא יורם תמ"א + שימור | `exterior/mevo-yoram/` | 1000 × 950 | כמעט ריבוע |
-| 23 | החי"ם | `exterior/hachaim/` | 1000 × 650 | לרוחב |
+| 23 | החי"ם 9 | `exterior/hachaim/` | 1000 × 650 | לרוחב |
 | 24 | שכונה בדימונה | `exterior/dimona/` | 1000 × 550 | רחבה |
 | 25 | משמר הגבול 7 | `exterior/mishmar-hagvul-7/` | 2050 × 950 | רחבה |
-| 26 | רש"י | `exterior/rashi/` | 1000 × 1550 | גבוהה |
+| 26 | רש"י 113 | `exterior/rashi/` | 1000 × 1550 | גבוהה |
 | 27 | משמר הגבול 6 | `exterior/mishmar-hagvul-6/` | 1000 × 600 | רחבה |
-| 28 | אכסניית נוער | `exterior/youth-hostel/` | 1000 × 550 | רחבה |
+| 28 | אכסניית נוער במבשרת ציון | `exterior/youth-hostel/` | 1000 × 550 | רחבה |
 
 ## פנים – `images/visualization/interior/`
 
@@ -55,12 +55,12 @@
 | # | הכותרת באתר | התיקייה | גודל מומלץ (רוחב × גובה) | צורה |
 |---|---|---|---|---|
 | 1 | סלון אגודת אחים | `interior/agudat-achim-salon/` | 1000 × 850 | לרוחב |
-| 2 | סלון מטבח בן צבי | `interior/ben-zvi-kitchen/` | 1350 × 850 | לרוחב |
+| 2 | סלון נחלת אחים שדרות בן צבי | `interior/ben-zvi-kitchen/` | 1350 × 850 | לרוחב |
 | 3 | חדרי הנצחה בית הגיבורים | `interior/beit-hagiborim-memorial/` | 650 × 850 | לאורך |
 | 4 | סלון מטבח כרמי הנדיב | `interior/karmei-hanadiv-kitchen/` | 1700 × 950 | רחבה |
 | 5 | מבט לנוף צפחה שערי העיר | `interior/shaarei-hair-view/` | 1350 × 950 | לרוחב |
 | 6 | לובי רכסים | `interior/rechasim-lobby/` | 1000 × 850 | לרוחב |
-| 7 | בריכה על הגג במאפו | `interior/mapu-rooftop-pool/` | 1300 × 850 | לרוחב |
+| 7 | בריכה על הגג במאפו 4 | `interior/mapu-rooftop-pool/` | 1300 × 850 | לרוחב |
 | 8 | סלון חסידי שטראוס | `interior/strauss-salon/` | 700 × 850 | לאורך |
 | 9 | סלון נופי נחל צופים | `interior/nachal-tzofim-salon/` | 1700 × 850 | רחבה |
 | 10 | ספריה בית הגיבורים | `interior/beit-hagiborim-library/` | 1350 × 850 | לרוחב |

@@ -10,17 +10,17 @@
 
 | # | הכותרת באתר | התיקייה | גודל מומלץ (רוחב × גובה) | צורה |
 |---|---|---|---|---|
-| 1 | חירם | `conservation/hiram/` | 1400 × 950 | לרוחב |
-| 2 | הבוכרים | `conservation/habucharim/` | 1050 × 950 | לרוחב |
-| 3 | שאול המלך | `conservation/shaul-hamelech/` | 550 × 950 | גבוהה |
-| 4 | פרידמן | `conservation/friedman/` | 1000 × 1000 | כמעט ריבוע |
+| 1 | חירם 6-8 | `conservation/hiram/` | 1400 × 950 | לרוחב |
+| 2 | הבוכרים 31 | `conservation/habucharim/` | 1050 × 950 | לרוחב |
+| 3 | שאול המלך 19 | `conservation/shaul-hamelech/` | 550 × 950 | גבוהה |
+| 4 | פרידמן 9 | `conservation/friedman/` | 1000 × 1000 | כמעט ריבוע |
 | 5 | מיוחס | `conservation/meyuchas/` | 1000 × 1000 | כמעט ריבוע |
 | 6 | אוהל שלצה | `conservation/ohel-shlatza/` | 1050 × 1000 | לרוחב |
-| 7 | חגיז | `conservation/hagiz/` | 1000 × 1000 | כמעט ריבוע |
-| 8 | ניסן בק | `conservation/nissan-bek/` | 1000 × 1000 | כמעט ריבוע |
-| 9 | לבוש מרדכי | `conservation/levush-mordechai/` | 1050 × 1550 | גבוהה |
+| 7 | חגיז 3-5 | `conservation/hagiz/` | 1000 × 1000 | כמעט ריבוע |
+| 8 | ניסן בק 26 | `conservation/nissan-bek/` | 1000 × 1000 | כמעט ריבוע |
+| 9 | לבוש מרדכי 3 | `conservation/levush-mordechai/` | 1050 × 1550 | גבוהה |
 | 10 | אגריפס | `conservation/agripas/` | 1000 × 1100 | כמעט ריבוע |
-| 11 | חגי | `conservation/haggai/` | 1000 × 1100 | כמעט ריבוע |
+| 11 | רח' חגי בגאולה | `conservation/haggai/` | 1000 × 1100 | כמעט ריבוע |
 | 12 | יפו פינת שטראוס | `conservation/jaffa-strauss/` | 1050 × 550 | רחבה |
 
 ## הסדר והפריסה
