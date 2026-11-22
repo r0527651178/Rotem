@@ -1,7 +1,7 @@
 ﻿@if (content(); as c) {
   <main>
     <app-hero [images]="c.hero.images" [intervalMs]="c.hero.intervalMs" [tagline]="c.hero.tagline" />
-    <app-capabilities [title]="c.capabilitiesTitle" [items]="c.capabilities" />
+    <app-capabilities [items]="c.capabilities" />
     <app-stats [items]="c.stats" />
   </main>
 

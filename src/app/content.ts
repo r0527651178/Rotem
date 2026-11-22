@@ -12,8 +12,10 @@ export interface Capability {
   aspect?: string;
   /** Side of the text. Default: alternates right / left. */
   layout?: 'text-right' | 'text-left';
-  /** With text-left: wide text column and the arrow above the image (brochure row). */
-  wideText?: boolean;
+  /** Design sizes in mockup pixels (1341px-wide page): image column, text column, title font size. */
+  imageWidth?: number;
+  textWidth?: number;
+  titleSize?: number;
   /** Optional second, smaller image next to the cover (side) or under it (below). */
   extraImage?: string;
   extraPosition?: 'side' | 'below';

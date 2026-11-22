@@ -1,4 +1,4 @@
-import { Component, HostListener, computed, inject, input, signal } from '@angular/core';
+import { Component, HostListener, inject, input, signal } from '@angular/core';
 import { Capability } from '../content';
 import { RevealDirective } from '../reveal.directive';
 import { SiteNav } from '../site-nav';
@@ -15,13 +15,11 @@ interface LightboxState {
   styleUrl: './capabilities.scss',
 })
 export class Capabilities {
-  readonly title = input('');
   readonly items = input<Capability[]>([]);
 
   protected readonly openId = signal<string | null>(null);
   protected readonly lightbox = signal<LightboxState | null>(null);
   protected readonly failed = signal<ReadonlySet<string>>(new Set());
-  protected readonly letters = computed(() => Array.from(this.title()));
 
   /** Arrow / image click: open the full gallery page if the section has one, else the inline gallery. */
   protected activate(cap: Capability): void {

@@ -1,10 +1,4 @@
 <section id="capabilities" class="caps">
-  <h2 class="caps__title" appReveal="fade" [attr.aria-label]="title()">
-    @for (ch of letters(); track $index; let i = $index) {
-      <span class="caps__letter" [style.--l]="i" aria-hidden="true">{{ ch }}</span>
-    }
-  </h2>
-
   @for (cap of items(); track cap.id; let odd = $odd) {
     @let open = openId() === cap.id;
     @let gallery = visible(cap.gallery);
@@ -16,17 +10,20 @@
       [id]="cap.id"
       [class.cap--reverse]="textLeft"
       [class.cap--open]="open"
-      [class.cap--wide-text]="cap.wideText"
+      [style.--img-w]="cap.imageWidth"
+      [style.--text-w]="cap.textWidth"
       [class.cap--extra-side]="hasExtra && cap.extraPosition !== 'below'"
       [class.cap--extra-below]="hasExtra && cap.extraPosition === 'below'"
     >
       <!-- In RTL the first grid column is on the right. Default: text right / image left. -->
       <div class="cap__body" [appReveal]="textLeft ? 'left' : 'right'">
-        <h3 class="cap__title" [style.--len]="(cap.title + (cap.titleLatin ? ' ' + cap.titleLatin : '')).length">
-          {{ cap.title }}
-          @if (cap.titleLatin) {
-            <span class="cap__title-latin">{{ cap.titleLatin }}</span>
-          }
+        <h3 class="cap__title" [style.--len]="(cap.title + (cap.titleLatin ? ' ' + cap.titleLatin : '')).length" [style.--cap-fs]="cap.titleSize">
+          <span class="cap__title-in">
+            {{ cap.title }}
+            @if (cap.titleLatin) {
+              <span class="cap__title-latin">{{ cap.titleLatin }}</span>
+            }
+          </span>
         </h3>
         @if (cap.subtitle) {
           <span class="cap__subtitle">{{ cap.subtitle }}</span>
