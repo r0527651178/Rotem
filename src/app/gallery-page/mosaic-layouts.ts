@@ -302,21 +302,25 @@ export const SALES_PLANS_2D_TEMPLATES: MosaicTemplate[] = [
     ],
   },
   {
-    sketch: 28, // free collage: top row of three, a framed tall plan on the right, a wide site plan below
-    height: 1390,
+    sketch: 28, // page 2, redesigned (הדמיות מכר דו ממדי חדש.png): gilboa and shaarei-hair on sheets, curved chaim plan bottom right
+    height: 1356,
     slots: [
-      { x: 1353, y: 0, w: 565, h: 430, caption: { x: 1353, y: 444, w: 400, align: 'left' } },
-      { x: 889, y: 0, w: 431, h: 590, caption: { x: 956, y: 608, w: 300, align: 'right' } },
-      { x: 2, y: 15, w: 707, h: 523, caption: { x: 371, y: 545, w: 300, align: 'right' } },
       {
-        x: 1429, y: 490, w: 460, h: 865,
-        frame: { x: 1414, y: 467, w: 475, h: 908 },
-        caption: { x: 1511, y: 1356, w: 200, align: 'center' },
+        x: 1336, y: 0, w: 543, h: 414,
+        sheets: ['#1f6f6a', '#134b4e'],
+        caption: { x: 1322, y: 436, w: 400, align: 'left' },
       },
+      { x: 889, y: 17, w: 376, h: 526, caption: { x: 1005, y: 585, w: 300, align: 'right' } },
+      {
+        x: 71, y: 40, w: 610, h: 453,
+        sheets: ['#e0bfa8', '#c9a58e'],
+        caption: { x: 404, y: 535, w: 322, align: 'right' },
+      },
+      { x: 1412, y: 472, w: 490, h: 845, caption: { x: 1508, y: 1298, w: 200, align: 'center' } },
       // T-shaped office plan: its box reaches under "שערי העיר" and "פרויקט השושנה", so it sits below them.
-      { x: 344, y: 432, w: 807, h: 434, z: 0, caption: { x: 1159, y: 850, w: 250, align: 'left' } },
-      { x: 2, y: 593, w: 327, h: 752, caption: { x: 347, y: 592, w: 300, align: 'left' } },
-      { x: 345, y: 885, w: 885, h: 460, caption: { x: 1257, y: 1320, w: 200, align: 'left' } },
+      { x: 367, y: 414, w: 776, h: 420, z: 0, caption: { x: 1150, y: 815, w: 250, align: 'left' } },
+      { x: 40, y: 572, w: 316, h: 722, caption: { x: 372, y: 567, w: 300, align: 'left' } },
+      { x: 370, y: 850, w: 849, h: 443, caption: { x: 1226, y: 1265, w: 200, align: 'left' } },
     ],
   },
 ];
