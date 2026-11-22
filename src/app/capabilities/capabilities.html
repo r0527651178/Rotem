@@ -1,4 +1,4 @@
-﻿<section id="capabilities" class="caps">
+<section id="capabilities" class="caps">
   <h2 class="caps__title" appReveal="fade" [attr.aria-label]="title()">
     @for (ch of letters(); track $index; let i = $index) {
       <span class="caps__letter" [style.--l]="i" aria-hidden="true">{{ ch }}</span>
@@ -16,6 +16,7 @@
       [id]="cap.id"
       [class.cap--reverse]="textLeft"
       [class.cap--open]="open"
+      [class.cap--wide-text]="cap.wideText"
       [class.cap--extra-side]="hasExtra && cap.extraPosition !== 'below'"
       [class.cap--extra-below]="hasExtra && cap.extraPosition === 'below'"
     >

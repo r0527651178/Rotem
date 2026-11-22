@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Geometry is taken from sketch 8 (2000px wide).
  * --u = one sketch pixel, scaled to the screen: 0.05vw = 1px on a 2000px screen.
  */
@@ -112,14 +112,16 @@
   padding-top: calc(var(--body2-top, 14) * var(--u));
 }
 
-// Titles and subtitles align toward the image (sketch); paragraphs stay right-aligned.
+// Titles, subtitles and paragraphs align toward the image: image on the left -> text flush left.
 .cap__title,
-.cap__subtitle {
+.cap__subtitle,
+.cap__text {
   text-align: end;
 }
 
 .cap--reverse .cap__title,
-.cap--reverse .cap__subtitle {
+.cap--reverse .cap__subtitle,
+.cap--reverse .cap__text {
   text-align: start;
 }
 
@@ -370,6 +372,30 @@
   }
 }
 
+/* ---------- Wide text row (brochure): text spans well past the image, arrow sits above the image ---------- */
+// Row: empty 64 | image 394 | gap 28 | wide text 610. The text column grows toward the page edge
+// (RTL: leftwards), so the long title keeps its full size on one line.
+@media (min-width: 821px) {
+  .cap--reverse.cap--wide-text {
+    --toggle-gap: 0px;
+    grid-template-columns: calc(64 * var(--u)) calc(394 * var(--u)) calc(28 * var(--u)) calc(610 * var(--u));
+    grid-template-areas:
+      '. media . body'
+      'gallery gallery gallery gallery';
+    .cap__media {
+      margin-top: calc(60 * var(--u));
+    }
+    .cap__body {
+      padding-top: calc(74 * var(--u));
+    }
+    // Arrow above the image, flush with its inner (left) edge.
+    .cap__toggle {
+      top: calc(-1 * (var(--toggle-h) + 10 * var(--u)));
+      inset-inline-start: auto;
+      inset-inline-end: 0;
+    }
+  }
+}
 /* ---------- Gallery (expands under the row) ---------- */
 .cap__gallery {
   grid-area: gallery;
@@ -571,8 +597,10 @@
 
   .cap__title,
   .cap__subtitle,
+  .cap__text,
   .cap--reverse .cap__title,
-  .cap--reverse .cap__subtitle {
+  .cap--reverse .cap__subtitle,
+  .cap--reverse .cap__text {
     text-align: start;
   }
 
