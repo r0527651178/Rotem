@@ -86,10 +86,10 @@
               { "title": "משמר הגבול 2 תמ\"א 38", "folder": "eshkol-tama38" },
 
               { "title": "ירמיהו 52", "folder": "yirmiyahu-52" },
-              { "title": "כנפי נשרים פינת נאג'רה", "folder": "kanfei-nesharim" },
+              { "title": "כנפי נשרים פינת נג'ארה", "folder": "kanfei-nesharim" },
               { "title": "לינקולן 8", "folder": "lincoln" },
               { "title": "דו משפחתי במרחב בישוב רחלים", "folder": "two-family" },
-              { "title": "מיכלין 3", "folder": "michlin-2" },
+              { "title": "מיכלין", "folder": "michlin-2" },
 
               { "title": "עין גדי 4", "folder": "ein-gedi" },
               { "title": "ירמיהו 46", "folder": "yirmiyahu" },
@@ -133,7 +133,7 @@
               { "title": "סלון במרחב", "folder": "bamerchav-salon" },
               { "title": "חדר פנימיה יקירי ירושלים", "folder": "yakirei-yerushalayim-dorm" },
               { "title": "אודיטוריום", "folder": "auditorium" },
-              { "title": "פינת אוכל", "folder": "dining-corner" }
+              { "title": "פינת אוכל בקריית משה", "folder": "dining-corner" }
             ]
           }
         ]
