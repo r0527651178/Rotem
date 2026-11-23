@@ -47,6 +47,11 @@
 | 26 | רש"י 113 | `exterior/rashi/` | 1000 × 1550 | גבוהה |
 | 27 | משמר הגבול 6 | `exterior/mishmar-hagvul-6/` | 1000 × 600 | רחבה |
 | 28 | אכסניית נוער במבשרת ציון | `exterior/youth-hostel/` | 1000 × 550 | רחבה |
+| 29 | המכבים 68 בני ברק | `exterior/bnei-brak-maccabim-68/` | 1500 × 950 | לרוחב |
+| 30 | נורדו 36 ראשון לציון | `exterior/nordau-36/` | 1500 × 950 | לרוחב |
+| 31 | צג בנות 28 ראשון לציון | `exterior/tzag-banot-28/` | 1050 × 1200 | לאורך |
+| 32 | המבנה של שיח סוד ברחוב זרצקי | `exterior/shiach-sod-zarzaki/` | 2000 × 1200 | רחבה |
+| 33 | קאסוטו 11 | `exterior/casuto-11/` | 1000 × 850 | לרוחב |
 
 ## פנים – `images/visualization/interior/`
 
