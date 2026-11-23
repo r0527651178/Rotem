@@ -115,7 +115,7 @@
 .brand__text {
   display: flex;
   align-items: baseline;
-  gap: 0.6vw;
+  gap: 0.18em;
   flex-direction: row-reverse;
   // Sits low, next to the R's lower stroke.
   align-self: flex-end;
@@ -131,13 +131,22 @@
 
 // Same size as the Hebrew name next to it.
 .brand__en {
-  font-size: 1em;
+  // Latin capitals are taller than the Hebrew letters at the same font size, so ROTEM is a bit smaller.
+  font-size: 0.88em;
+  line-height: 1;
+  font-weight: 600;
   letter-spacing: 0.04em;
   color: var(--beige);
 }
 
 .brand__he {
   direction: rtl;
+}
+
+// The name "רותם" has the same colour as ROTEM.
+.brand__he-name {
+  color: var(--beige);
+  font-weight: 600;
 }
 
 /* ---------- Burger (3 lines, shrinking length) ---------- */
