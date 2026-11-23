@@ -46,6 +46,10 @@ export interface Tile {
   cover?: boolean;
   /** object-position of the image. */
   pos?: string;
+  /** Tilt in degrees (clockwise). */
+  rot?: number;
+  /** Page overlaps its neighbours: drawn with a soft shadow. */
+  layer?: boolean;
   /** Thin outline around the tile, in % of the block. */
   frame?: { left: number; top: number; width: number; height: number };
 }
@@ -323,6 +327,7 @@ export class GalleryPage {
         const s = slots[k];
         return {
           ...item,
+          src: s.png ? item.src.replace(/\.jpg$/, '.png') : item.src,
           left: px(s.x),
           top: py(s.y),
           width: px(s.w),
@@ -334,6 +339,8 @@ export class GalleryPage {
           z: s.z,
           cover: s.fit === 'cover',
           pos: s.pos,
+          rot: s.rot,
+          layer: !!s.rot || !!s.png,
           caption: s.caption && {
             left: px(s.caption.x),
             top: py(s.caption.y),

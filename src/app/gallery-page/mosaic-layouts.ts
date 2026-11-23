@@ -38,6 +38,10 @@ export interface MosaicSlot extends MosaicBox {
   fit?: 'cover';
   /** object-position for a cropped image, e.g. '100% 50%' keeps its right side (sketch 35). */
   pos?: string;
+  /** Tilt in degrees, clockwise (brochure mockups, sketch 37). Desktop only; the stacked layout stays straight. */
+  rot?: number;
+  /** Show `N.png` (transparent mockup) in the tile instead of `N.jpg`; the viewer keeps the jpg. */
+  png?: boolean;
 }
 
 /** A full-width coloured strip drawn under the tiles, with an optional title (AI pages). */
@@ -508,17 +512,20 @@ export const BROCHURE_TEMPLATES: MosaicTemplate[] = [
   },
   {
     sketch: 37, // Beit Yosef Moldova: cover, three spreads. Kinneret: logo, mockup, three spreads.
+    // Moldova: the cover (transparent png) lies over the first spread, which lies over the second,
+    // which touches the third; the two middle spreads are tilted about 6 degrees clockwise.
+    // Kinneret: the last spread is tilted 4 degrees and sits under its neighbour.
     height: 1181,
     slots: [
-      { x: 50, y: 5, w: 441, h: 599 },
-      { x: 508, y: 139, w: 418, h: 301 },
-      { x: 944, y: 139, w: 418, h: 298 },
-      { x: 1379, y: 139, w: 418, h: 294, caption: { x: 581, y: 536, w: 825, align: 'center', band: true } },
-      { x: 123, y: 760, w: 329, h: 363 },
-      { x: 485, y: 759, w: 654, h: 368 },
-      { x: 1147, y: 705, w: 364, h: 200 },
-      { x: 1147, y: 925, w: 378, h: 208 },
-      { x: 1531, y: 820, w: 378, h: 208, caption: { x: 113, y: 1142, w: 380, align: 'left', band: true } },
+      { x: 50, y: 5, w: 481, h: 614, z: 4, png: true },
+      { x: 438, y: 95, w: 470, h: 362, z: 3, rot: 6.5 },
+      { x: 830, y: 62, w: 520, h: 400, z: 2, rot: 6 },
+      { x: 1277, y: 42, w: 531, h: 375, z: 1, caption: { x: 581, y: 536, w: 825, align: 'center', band: true } },
+      { x: 112, y: 763, w: 348, h: 360 },
+      { x: 483, y: 761, w: 655, h: 370 },
+      { x: 1147, y: 705, w: 363, h: 200 },
+      { x: 1215, y: 936, w: 378, h: 206, z: 2 },
+      { x: 1526, y: 912, w: 385, h: 210, z: 1, rot: 4, caption: { x: 113, y: 1142, w: 380, align: 'left', band: true } },
     ],
   },
 ];

@@ -1,4 +1,4 @@
-﻿:host {
+:host {
   display: block;
   background: var(--cream);
 }
@@ -406,6 +406,12 @@
     // Each slot has the page's proportions, so the page shows whole.
     // No shadow: a transparent cover (Mashi) would show the shadow of its empty corners.
     background: none;
+    // Mockups in the sketch are tilted and overlap (sketch 37); --rot comes from the template.
+    rotate: var(--rot, 0deg);
+  }
+  .tile--layer {
+    overflow: visible;
+    filter: drop-shadow(0 0.4cqw 0.8cqw rgba(60, 45, 30, 0.28));
   }
 
   // The band already names the brochure, so the page stays in view: no veil, no hover title.
@@ -437,6 +443,13 @@
 
 // Tablet and phone: the pages stack (see "Plans on tablet and phone") and the band follows them.
 @media (max-width: 899px) {
+  // Stacked pages stay straight and flat.
+  .mosaic--bands .tile {
+    rotate: none;
+  }
+  .mosaic--bands .tile--layer {
+    filter: none;
+  }
   // Doubled class: these rules come before the plans rules in the file and must win.
   .mosaic--bands.mosaic--plans {
     gap: 14px;

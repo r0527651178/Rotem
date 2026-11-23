@@ -94,6 +94,8 @@
                   [class.tile--plan]="!!tile.caption && !tile.caption.band"
                   [class.tile--card]="!!tile.sheets"
                   [class.tile--cover]="!!tile.cover"
+                  [class.tile--layer]="!!tile.layer"
+                  [style.--rot]="tile.rot ? tile.rot + 'deg' : null"
                   [style.z-index]="tile.z ?? null"
                   [style.--l.%]="tile.left"
                   [style.--t.%]="tile.top"
