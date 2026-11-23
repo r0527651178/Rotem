@@ -212,7 +212,7 @@
   }
 }
 
-.burger:hover .burger__line {
+.header:not(.header--open) .burger:hover .burger__line {
   width: 100%;
 }
 
@@ -222,6 +222,13 @@
     width: 35%;
     top: var(--b);
     background: var(--beige);
+    // Shrink first, then rotate, so the X never looks big mid-animation.
+    transition:
+      transform 0.6s var(--ease-out),
+      width 0.2s var(--ease-out),
+      opacity 0.4s,
+      top 0.6s var(--ease-out),
+      background-color 0.4s;
   }
   .burger__line--1 {
     transform: rotate(45deg);
